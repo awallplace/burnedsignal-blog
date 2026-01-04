@@ -1,0 +1,53 @@
+{{ define "main" }}
+<div class="list-page">
+  <header class="list-header">
+    <h1 class="list-title">{{ .Title }}</h1>
+    {{ with .Description }}
+    <p class="list-description">{{ . }}</p>
+    {{ end }}
+  </header>
+
+  {{ $paginator := .Paginate .Pages 10 }}
+
+  <div class="post-list">
+    {{ range $paginator.Pages }}
+    <article class="post-card">
+      <a href="{{ .Permalink }}" class="post-card-link">
+        <h2 class="post-card-title">{{ .Title }}</h2>
+        <div class="post-card-meta">
+          <time datetime="{{ .Date.Format "2006-01-02" }}">{{ .Date.Format "Jan 2, 2006" }}</time>
+          {{ if .Params.readingTime }}
+          <span class="separator">|</span>
+          <span class="reading-time">{{ .ReadingTime }} min read</span>
+          {{ end }}
+        </div>
+        {{ with .Summary }}
+        <p class="post-card-summary">{{ . | plainify | truncate 160 }}</p>
+        {{ end }}
+        {{ with .Params.tags }}
+        <div class="post-card-tags">
+          {{ range first 3 . }}
+          <span class="tag-pill">#{{ . }}</span>
+          {{ end }}
+        </div>
+        {{ end }}
+      </a>
+    </article>
+    {{ end }}
+  </div>
+
+  {{ if gt $paginator.TotalPages 1 }}
+  <nav class="pagination">
+    {{ if $paginator.HasPrev }}
+    <a href="{{ $paginator.Prev.URL }}" class="pagination-prev">Previous</a>
+    {{ end }}
+    <span class="pagination-info">
+      {{ $paginator.PageNumber }} / {{ $paginator.TotalPages }}
+    </span>
+    {{ if $paginator.HasNext }}
+    <a href="{{ $paginator.Next.URL }}" class="pagination-next">Next</a>
+    {{ end }}
+  </nav>
+  {{ end }}
+</div>
+{{ end }}

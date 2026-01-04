@@ -1,0 +1,36 @@
+<footer class="site-footer">
+  <div class="footer-container">
+    <div class="footer-content">
+      <div class="footer-brand">
+        <span class="footer-logo">burned<span class="accent">signal</span></span>
+        <p class="footer-tagline">{{ site.Params.tagline }}</p>
+      </div>
+
+      <div class="footer-links">
+        <a href="{{ "posts/" | relLangURL }}" class="footer-link">
+          {{ if eq .Lang "tr" }}Yazilar
+          {{ else if eq .Lang "es" }}Articulos
+          {{ else if eq .Lang "zh" }}Wen Zhang
+          {{ else }}Posts{{ end }}
+        </a>
+        <a href="{{ "about/" | relLangURL }}" class="footer-link">
+          {{ if eq .Lang "tr" }}Hakkinda
+          {{ else if eq .Lang "es" }}Acerca de
+          {{ else if eq .Lang "zh" }}Guan Yu
+          {{ else }}About{{ end }}
+        </a>
+        <a href="{{ "index.xml" | relLangURL }}" class="footer-link">RSS</a>
+      </div>
+    </div>
+
+    <div class="footer-bottom">
+      <p class="copyright">
+        &copy; {{ now.Year }} {{ site.Title }}.
+        {{ if eq .Lang "tr" }}Tum haklari saklidir.
+        {{ else if eq .Lang "es" }}Todos los derechos reservados.
+        {{ else if eq .Lang "zh" }}Ban Quan Suo You.
+        {{ else }}All rights reserved.{{ end }}
+      </p>
+    </div>
+  </div>
+</footer>

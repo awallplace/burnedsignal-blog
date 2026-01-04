@@ -1,0 +1,21 @@
+<div class="post-meta">
+  <time class="post-date" datetime="{{ .Date.Format "2006-01-02" }}">
+    {{ .Date.Format (site.Params.dateFormat | default "January 2, 2006") }}
+  </time>
+
+  {{ if site.Params.showReadingTime }}
+  <span class="meta-separator">|</span>
+  <span class="reading-time">
+    {{ .ReadingTime }}
+    {{ if eq .Lang "tr" }}dk okuma
+    {{ else if eq .Lang "es" }}min de lectura
+    {{ else if eq .Lang "zh" }}fen zhong yue du
+    {{ else }}min read{{ end }}
+  </span>
+  {{ end }}
+
+  {{ with .Params.author }}
+  <span class="meta-separator">|</span>
+  <span class="post-author">{{ . }}</span>
+  {{ end }}
+</div>

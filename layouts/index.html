@@ -1,0 +1,110 @@
+{{ define "main" }}
+<section class="hero">
+  <div class="hero-content">
+    <h1 class="hero-title">
+      <span class="title-burned">burned</span><span class="title-signal">signal</span>
+    </h1>
+    <p class="hero-tagline">{{ site.Params.tagline }}</p>
+    <p class="hero-description">
+      {{ if eq .Lang "tr" }}Siber guvenlik, istihbarat ve dijital gizlilik uzerine derinlemesine analizler.
+      {{ else if eq .Lang "es" }}Analisis profundos sobre ciberseguridad, inteligencia y privacidad digital.
+      {{ else if eq .Lang "zh" }}Guan Yu Wang Luo An Quan, Qing Bao He Shu Zi Yin Si De Shen Du Fen Xi.
+      {{ else }}Deep dives into cybersecurity, intelligence, and digital privacy.{{ end }}
+    </p>
+  </div>
+  <div class="hero-visual">
+    <div class="terminal-window">
+      <div class="terminal-header">
+        <span class="terminal-dot red"></span>
+        <span class="terminal-dot yellow"></span>
+        <span class="terminal-dot green"></span>
+      </div>
+      <div class="terminal-body">
+        <code>
+          <span class="prompt">$</span> <span class="cmd">cat</span> signal.log<br>
+          <span class="output">[INTERCEPTED] encrypted_channel_42</span><br>
+          <span class="output">[DECODED] payload extracted</span><br>
+          <span class="output">[SIGNAL] burned.</span><br>
+          <span class="prompt">$</span> <span class="cursor">_</span>
+        </code>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="recent-posts">
+  <header class="section-header">
+    <h2 class="section-title">
+      {{ if eq .Lang "tr" }}Son Yazilar
+      {{ else if eq .Lang "es" }}Articulos Recientes
+      {{ else if eq .Lang "zh" }}Zui Xin Wen Zhang
+      {{ else }}Recent Posts{{ end }}
+    </h2>
+    <a href="{{ "posts/" | relLangURL }}" class="view-all">
+      {{ if eq .Lang "tr" }}Tumu
+      {{ else if eq .Lang "es" }}Ver todos
+      {{ else if eq .Lang "zh" }}Cha Kan Quan Bu
+      {{ else }}View all{{ end }}
+      <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
+        <path d="M6 3L11 8L6 13" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+      </svg>
+    </a>
+  </header>
+
+  <div class="posts-grid">
+    {{ $posts := where site.RegularPages "Section" "posts" }}
+    {{ $posts = where $posts "Lang" .Lang }}
+    {{ range first 6 $posts }}
+    <article class="post-card">
+      <a href="{{ .Permalink }}" class="post-card-link">
+        <h3 class="post-card-title">{{ .Title }}</h3>
+        <div class="post-card-meta">
+          <time datetime="{{ .Date.Format "2006-01-02" }}">{{ .Date.Format "Jan 2, 2006" }}</time>
+          <span class="separator">|</span>
+          <span class="reading-time">{{ .ReadingTime }} min</span>
+        </div>
+        {{ with .Summary }}
+        <p class="post-card-summary">{{ . | plainify | truncate 120 }}</p>
+        {{ end }}
+        {{ with .Params.tags }}
+        <div class="post-card-tags">
+          {{ range first 3 . }}
+          <span class="tag-pill">#{{ . }}</span>
+          {{ end }}
+        </div>
+        {{ end }}
+      </a>
+    </article>
+    {{ else }}
+    <p class="no-posts">
+      {{ if eq .Lang "tr" }}Henuz yazi yok.
+      {{ else if eq .Lang "es" }}No hay articulos aun.
+      {{ else if eq .Lang "zh" }}Zan Wu Wen Zhang.
+      {{ else }}No posts yet.{{ end }}
+    </p>
+    {{ end }}
+  </div>
+</section>
+
+{{ $tags := .Site.Taxonomies.tags }}
+{{ if gt (len $tags) 0 }}
+<section class="tags-section">
+  <header class="section-header">
+    <h2 class="section-title">
+      {{ if eq .Lang "tr" }}Etiketler
+      {{ else if eq .Lang "es" }}Etiquetas
+      {{ else if eq .Lang "zh" }}Biao Qian
+      {{ else }}Tags{{ end }}
+    </h2>
+  </header>
+  <div class="tags-cloud">
+    {{ range $name, $taxonomy := $tags }}
+    <a href="{{ "tags/" | relLangURL }}{{ $name | urlize }}/" class="tag-link">
+      #{{ $name }}
+      <span class="tag-count">{{ len $taxonomy.Pages }}</span>
+    </a>
+    {{ end }}
+  </div>
+</section>
+{{ end }}
+{{ end }}

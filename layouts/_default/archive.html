@@ -1,0 +1,38 @@
+{{ define "main" }}
+<div class="archive-page">
+  <header class="archive-header">
+    <h1 class="archive-title">
+      {{ if eq .Lang "tr" }}Arsiv
+      {{ else if eq .Lang "es" }}Archivo
+      {{ else if eq .Lang "zh" }}Dang An
+      {{ else }}Archive{{ end }}
+    </h1>
+    <p class="archive-description">
+      {{ if eq .Lang "tr" }}Tum yazilar tarih sirasina gore
+      {{ else if eq .Lang "es" }}Todos los articulos ordenados por fecha
+      {{ else if eq .Lang "zh" }}Suo You Wen Zhang An Shi Jian Pai Lie
+      {{ else }}All posts sorted by date{{ end }}
+    </p>
+  </header>
+
+  {{ $posts := where site.RegularPages "Section" "posts" }}
+  {{ $posts = where $posts "Lang" .Lang }}
+  {{ $postsByYear := $posts.GroupByDate "2006" }}
+
+  {{ range $postsByYear }}
+  <section class="archive-year">
+    <h2 class="year-title">{{ .Key }}</h2>
+    <ul class="archive-list">
+      {{ range .Pages }}
+      <li class="archive-item">
+        <time datetime="{{ .Date.Format "2006-01-02" }}" class="archive-date">
+          {{ .Date.Format "Jan 02" }}
+        </time>
+        <a href="{{ .Permalink }}" class="archive-link">{{ .Title }}</a>
+      </li>
+      {{ end }}
+    </ul>
+  </section>
+  {{ end }}
+</div>
+{{ end }}

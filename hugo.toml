@@ -1,0 +1,157 @@
+baseURL = "https://burnedsignal.github.io/"
+languageCode = "en-us"
+title = "burnedsignal"
+
+defaultContentLanguage = "en"
+defaultContentLanguageInSubdir = true
+
+enableRobotsTXT = true
+enableGitInfo = false
+enableEmoji = false
+
+[params]
+  tagline = "Exposing what was meant to stay hidden"
+  description = "Cybersecurity & Intelligence Blog"
+  author = "burnedsignal"
+  mainSections = ["posts"]
+  showReadingTime = true
+  showTableOfContents = true
+  dateFormat = "January 2, 2006"
+
+[markup]
+  [markup.highlight]
+    style = "monokai"
+    lineNos = true
+    lineNumbersInTable = true
+    tabWidth = 4
+  [markup.goldmark]
+    [markup.goldmark.renderer]
+      unsafe = true
+  [markup.tableOfContents]
+    startLevel = 2
+    endLevel = 4
+    ordered = false
+
+[languages]
+  [languages.en]
+    languageName = "English"
+    languageCode = "en"
+    contentDir = "content/en"
+    weight = 1
+    [languages.en.params]
+      description = "Cybersecurity & Intelligence Blog"
+    [languages.en.menus]
+      [[languages.en.menus.main]]
+        name = "Home"
+        url = "/"
+        weight = 1
+      [[languages.en.menus.main]]
+        name = "Posts"
+        url = "/posts/"
+        weight = 2
+      [[languages.en.menus.main]]
+        name = "About"
+        url = "/about/"
+        weight = 3
+      [[languages.en.menus.main]]
+        name = "Archive"
+        url = "/archive/"
+        weight = 4
+
+  [languages.tr]
+    languageName = "Turkce"
+    languageCode = "tr"
+    contentDir = "content/tr"
+    weight = 2
+    [languages.tr.params]
+      description = "Siber Guvenlik & Istihbarat Blogu"
+    [languages.tr.menus]
+      [[languages.tr.menus.main]]
+        name = "Ana Sayfa"
+        url = "/"
+        weight = 1
+      [[languages.tr.menus.main]]
+        name = "Yazilar"
+        url = "/posts/"
+        weight = 2
+      [[languages.tr.menus.main]]
+        name = "Hakkinda"
+        url = "/about/"
+        weight = 3
+      [[languages.tr.menus.main]]
+        name = "Arsiv"
+        url = "/archive/"
+        weight = 4
+
+  [languages.es]
+    languageName = "Espanol"
+    languageCode = "es"
+    contentDir = "content/es"
+    weight = 3
+    [languages.es.params]
+      description = "Blog de Ciberseguridad e Inteligencia"
+    [languages.es.menus]
+      [[languages.es.menus.main]]
+        name = "Inicio"
+        url = "/"
+        weight = 1
+      [[languages.es.menus.main]]
+        name = "Articulos"
+        url = "/posts/"
+        weight = 2
+      [[languages.es.menus.main]]
+        name = "Acerca de"
+        url = "/about/"
+        weight = 3
+      [[languages.es.menus.main]]
+        name = "Archivo"
+        url = "/archive/"
+        weight = 4
+
+  [languages.zh]
+    languageName = "Zhongwen"
+    languageCode = "zh"
+    contentDir = "content/zh"
+    weight = 4
+    [languages.zh.params]
+      description = "Wang Luo An Quan Yu Qing Bao Bo Ke"
+    [languages.zh.menus]
+      [[languages.zh.menus.main]]
+        name = "Shou Ye"
+        url = "/"
+        weight = 1
+      [[languages.zh.menus.main]]
+        name = "Wen Zhang"
+        url = "/posts/"
+        weight = 2
+      [[languages.zh.menus.main]]
+        name = "Guan Yu"
+        url = "/about/"
+        weight = 3
+      [[languages.zh.menus.main]]
+        name = "Dang An"
+        url = "/archive/"
+        weight = 4
+
+[taxonomies]
+  tag = "tags"
+  category = "categories"
+
+[outputs]
+  home = ["HTML", "RSS"]
+  section = ["HTML", "RSS"]
+
+[sitemap]
+  changefreq = "weekly"
+  filename = "sitemap.xml"
+  priority = 0.5
+
+[privacy]
+  [privacy.disqus]
+    disable = true
+  [privacy.googleAnalytics]
+    disable = true
+  [privacy.twitter]
+    disable = true
+  [privacy.youtube]
+    disable = true
