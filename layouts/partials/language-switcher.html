@@ -7,35 +7,27 @@
     </svg>
   </button>
   <ul class="lang-dropdown">
+    {{ $currentLang := .Lang }}
+    {{ $currentPage := . }}
     {{ range site.Languages }}
-    {{ if ne $.Lang .Lang }}
-    <li>
-      {{ $translation := $.Page }}
-      {{ range $.Page.Translations }}
-        {{ if eq .Lang $.Lang }}{{ $translation = . }}{{ end }}
-      {{ end }}
-      {{ range $.Page.Translations }}
-        {{ if eq .Lang .Lang }}
-        <a href="{{ .Permalink }}" class="lang-option" hreflang="{{ .Lang }}">
-          {{ .Language.LanguageName }}
+      {{ if ne .Lang $currentLang }}
+      <li>
+        {{ $translationFound := false }}
+        {{ range $currentPage.Translations }}
+          {{ if eq .Lang $.Lang }}
+            <a href="{{ .Permalink }}" class="lang-option" hreflang="{{ .Lang }}">
+              {{ .Language.LanguageName }}
+            </a>
+            {{ $translationFound = true }}
+          {{ end }}
+        {{ end }}
+        {{ if not $translationFound }}
+        <a href="/{{ .Lang }}/" class="lang-option" hreflang="{{ .Lang }}">
+          {{ .LanguageName }}
         </a>
         {{ end }}
+      </li>
       {{ end }}
-      {{ if not ($.Page.IsTranslated) }}
-      <a href="{{ .Lang | relURL }}/" class="lang-option" hreflang="{{ .Lang }}">
-        {{ .LanguageName }}
-      </a>
-      {{ else }}
-      {{ range $.Page.Translations }}
-      {{ if eq .Lang $.Lang }}{{ else }}
-      <a href="{{ .Permalink }}" class="lang-option" hreflang="{{ .Lang }}">
-        {{ .Language.LanguageName }}
-      </a>
-      {{ end }}
-      {{ end }}
-      {{ end }}
-    </li>
-    {{ end }}
     {{ end }}
   </ul>
 </div>
