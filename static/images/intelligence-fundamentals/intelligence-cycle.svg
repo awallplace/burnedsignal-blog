@@ -1,0 +1,127 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 700">
+  <defs>
+    <linearGradient id="nodeGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#2d2d2d"/>
+      <stop offset="100%" style="stop-color:#1a1a1a"/>
+    </linearGradient>
+    <linearGradient id="activeGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#ff6b00"/>
+      <stop offset="100%" style="stop-color:#cc5500"/>
+    </linearGradient>
+    <filter id="glow">
+      <feGaussianBlur stdDeviation="4" result="coloredBlur"/>
+      <feMerge>
+        <feMergeNode in="coloredBlur"/>
+        <feMergeNode in="SourceGraphic"/>
+      </feMerge>
+    </filter>
+    <marker id="arrow" markerWidth="10" markerHeight="10" refX="9" refY="3" orient="auto" markerUnits="strokeWidth">
+      <path d="M0,0 L0,6 L9,3 z" fill="#ff6b00"/>
+    </marker>
+  </defs>
+  
+  <!-- Background -->
+  <rect width="800" height="700" fill="#0a0a0a"/>
+  
+  <!-- Subtle grid -->
+  <g stroke="#141414" stroke-width="1" opacity="0.5">
+    <line x1="0" y1="100" x2="800" y2="100"/>
+    <line x1="0" y1="200" x2="800" y2="200"/>
+    <line x1="0" y1="300" x2="800" y2="300"/>
+    <line x1="0" y1="400" x2="800" y2="400"/>
+    <line x1="0" y1="500" x2="800" y2="500"/>
+    <line x1="0" y1="600" x2="800" y2="600"/>
+    <line x1="100" y1="0" x2="100" y2="700"/>
+    <line x1="200" y1="0" x2="200" y2="700"/>
+    <line x1="300" y1="0" x2="300" y2="700"/>
+    <line x1="400" y1="0" x2="400" y2="700"/>
+    <line x1="500" y1="0" x2="500" y2="700"/>
+    <line x1="600" y1="0" x2="600" y2="700"/>
+    <line x1="700" y1="0" x2="700" y2="700"/>
+  </g>
+  
+  <!-- Title -->
+  <text x="400" y="45" text-anchor="middle" fill="#e5e5e5" font-family="monospace" font-size="28" font-weight="bold">THE INTELLIGENCE CYCLE</text>
+  <text x="400" y="70" text-anchor="middle" fill="#666" font-family="monospace" font-size="14">Continuous Process of Intelligence Production</text>
+  
+  <!-- Center circle -->
+  <circle cx="400" cy="380" r="80" fill="none" stroke="#333" stroke-width="2" stroke-dasharray="5,5"/>
+  <text x="400" y="375" text-anchor="middle" fill="#666" font-family="monospace" font-size="12">CONTINUOUS</text>
+  <text x="400" y="392" text-anchor="middle" fill="#666" font-family="monospace" font-size="12">CYCLE</text>
+  
+  <!-- Connecting arcs (simplified as curves) -->
+  <g fill="none" stroke="#ff6b00" stroke-width="2" opacity="0.6">
+    <!-- 1 to 2 -->
+    <path d="M 400 150 Q 550 180 580 280" marker-end="url(#arrow)"/>
+    <!-- 2 to 3 -->
+    <path d="M 620 350 Q 620 450 550 510" marker-end="url(#arrow)"/>
+    <!-- 3 to 4 -->
+    <path d="M 480 560 Q 400 600 320 560" marker-end="url(#arrow)"/>
+    <!-- 4 to 5 -->
+    <path d="M 250 510 Q 180 450 180 350" marker-end="url(#arrow)"/>
+    <!-- 5 to 6 -->
+    <path d="M 220 280 Q 250 180 400 150" marker-end="url(#arrow)"/>
+    <!-- 6 to 1 (feedback loop - dashed) -->
+    <path d="M 350 150 Q 300 120 300 100 Q 300 80 400 100 Q 500 80 500 100 Q 500 120 450 150" stroke-dasharray="5,5" marker-end="url(#arrow)"/>
+  </g>
+  
+  <!-- Node 1: Requirements -->
+  <g transform="translate(400, 130)">
+    <rect x="-70" y="-35" width="140" height="70" rx="10" fill="url(#activeGrad)" stroke="#ff8c40" stroke-width="2" filter="url(#glow)"/>
+    <text x="0" y="-8" text-anchor="middle" fill="#0a0a0a" font-family="monospace" font-size="11" font-weight="bold">1. REQUIREMENTS</text>
+    <text x="0" y="8" text-anchor="middle" fill="#1a1a1a" font-family="monospace" font-size="9">Planning &amp;</text>
+    <text x="0" y="20" text-anchor="middle" fill="#1a1a1a" font-family="monospace" font-size="9">Direction</text>
+  </g>
+  
+  <!-- Node 2: Collection -->
+  <g transform="translate(600, 300)">
+    <rect x="-60" y="-35" width="120" height="70" rx="10" fill="url(#nodeGrad)" stroke="#ff6b00" stroke-width="2"/>
+    <text x="0" y="-8" text-anchor="middle" fill="#e5e5e5" font-family="monospace" font-size="11" font-weight="bold">2. COLLECTION</text>
+    <text x="0" y="8" text-anchor="middle" fill="#888" font-family="monospace" font-size="9">Gathering</text>
+    <text x="0" y="20" text-anchor="middle" fill="#888" font-family="monospace" font-size="9">Information</text>
+  </g>
+  
+  <!-- Node 3: Processing -->
+  <g transform="translate(520, 530)">
+    <rect x="-60" y="-35" width="120" height="70" rx="10" fill="url(#nodeGrad)" stroke="#ff6b00" stroke-width="2"/>
+    <text x="0" y="-8" text-anchor="middle" fill="#e5e5e5" font-family="monospace" font-size="11" font-weight="bold">3. PROCESSING</text>
+    <text x="0" y="8" text-anchor="middle" fill="#888" font-family="monospace" font-size="9">Exploitation &amp;</text>
+    <text x="0" y="20" text-anchor="middle" fill="#888" font-family="monospace" font-size="9">Conversion</text>
+  </g>
+  
+  <!-- Node 4: Analysis -->
+  <g transform="translate(280, 530)">
+    <rect x="-60" y="-35" width="120" height="70" rx="10" fill="url(#nodeGrad)" stroke="#ff6b00" stroke-width="2"/>
+    <text x="0" y="-8" text-anchor="middle" fill="#e5e5e5" font-family="monospace" font-size="11" font-weight="bold">4. ANALYSIS</text>
+    <text x="0" y="8" text-anchor="middle" fill="#888" font-family="monospace" font-size="9">Production &amp;</text>
+    <text x="0" y="20" text-anchor="middle" fill="#888" font-family="monospace" font-size="9">Synthesis</text>
+  </g>
+  
+  <!-- Node 5: Dissemination -->
+  <g transform="translate(200, 300)">
+    <rect x="-65" y="-35" width="130" height="70" rx="10" fill="url(#nodeGrad)" stroke="#ff6b00" stroke-width="2"/>
+    <text x="0" y="-8" text-anchor="middle" fill="#e5e5e5" font-family="monospace" font-size="11" font-weight="bold">5. DISSEMINATION</text>
+    <text x="0" y="8" text-anchor="middle" fill="#888" font-family="monospace" font-size="9">Distribution to</text>
+    <text x="0" y="20" text-anchor="middle" fill="#888" font-family="monospace" font-size="9">Consumers</text>
+  </g>
+  
+  <!-- Node 6: Feedback -->
+  <g transform="translate(290, 180)">
+    <rect x="-50" y="-25" width="100" height="50" rx="8" fill="url(#nodeGrad)" stroke="#ff6b00" stroke-width="1" stroke-dasharray="4,2"/>
+    <text x="0" y="-3" text-anchor="middle" fill="#ff6b00" font-family="monospace" font-size="10" font-weight="bold">6. FEEDBACK</text>
+    <text x="0" y="12" text-anchor="middle" fill="#888" font-family="monospace" font-size="8">Evaluation</text>
+  </g>
+  
+  <!-- Legend -->
+  <g transform="translate(620, 620)">
+    <rect x="0" y="0" width="160" height="60" rx="5" fill="#141414" stroke="#333" stroke-width="1"/>
+    <text x="80" y="18" text-anchor="middle" fill="#888" font-family="monospace" font-size="10">LEGEND</text>
+    <line x1="15" y1="32" x2="45" y2="32" stroke="#ff6b00" stroke-width="2"/>
+    <text x="55" y="36" fill="#666" font-family="monospace" font-size="9">Process flow</text>
+    <line x1="15" y1="48" x2="45" y2="48" stroke="#ff6b00" stroke-width="2" stroke-dasharray="4,2"/>
+    <text x="55" y="52" fill="#666" font-family="monospace" font-size="9">Feedback loop</text>
+  </g>
+  
+  <!-- Footer -->
+  <text x="400" y="680" text-anchor="middle" fill="#333" font-family="monospace" font-size="10">burnedsignal.com | Intelligence Fundamentals</text>
+</svg>
