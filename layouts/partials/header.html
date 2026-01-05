@@ -34,6 +34,10 @@ document.addEventListener('DOMContentLoaded', function() {
       const expanded = this.getAttribute('aria-expanded') === 'true';
       this.setAttribute('aria-expanded', !expanded);
       nav.classList.toggle('is-open');
+      toggle.classList.toggle('is-active');
+
+      // Prevent body scroll when menu is open
+      document.body.style.overflow = nav.classList.contains('is-open') ? 'hidden' : '';
     });
   }
 });

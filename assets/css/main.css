@@ -215,6 +215,7 @@ button {
   height: 2px;
   background: var(--color-text);
   border-radius: 2px;
+  transition: all var(--transition-fast);
 }
 
 .hamburger::before,
@@ -226,6 +227,7 @@ button {
   height: 2px;
   background: var(--color-text);
   border-radius: 2px;
+  transition: all var(--transition-fast);
 }
 
 .hamburger::before {
@@ -234,6 +236,26 @@ button {
 
 .hamburger::after {
   top: 6px;
+}
+
+/* Hamburger X animation when menu is open */
+.main-nav.is-open ~ .mobile-menu-toggle .hamburger,
+.mobile-menu-toggle.is-active .hamburger {
+  background: transparent;
+}
+
+.main-nav.is-open ~ .mobile-menu-toggle .hamburger::before,
+.mobile-menu-toggle.is-active .hamburger::before {
+  top: 0;
+  transform: rotate(45deg);
+  background: var(--color-primary);
+}
+
+.main-nav.is-open ~ .mobile-menu-toggle .hamburger::after,
+.mobile-menu-toggle.is-active .hamburger::after {
+  top: 0;
+  transform: rotate(-45deg);
+  background: var(--color-primary);
 }
 
 /* Language switcher */
@@ -1154,7 +1176,7 @@ button {
     left: 0;
     right: 0;
     bottom: 0;
-    background: var(--color-bg);
+    background: rgba(10, 10, 10, 0.98);
     flex-direction: column;
     padding: var(--space-6);
     gap: var(--space-6);
@@ -1162,12 +1184,32 @@ button {
     visibility: hidden;
     transform: translateY(-20px);
     transition: all var(--transition-base);
+    z-index: 150;
+    overflow-y: auto;
+    backdrop-filter: blur(10px);
   }
 
   .main-nav.is-open {
     opacity: 1;
     visibility: visible;
     transform: translateY(0);
+  }
+
+  /* Add is-active class to hamburger button via JS */
+  .mobile-menu-toggle.is-active .hamburger {
+    background: transparent;
+  }
+
+  .mobile-menu-toggle.is-active .hamburger::before {
+    top: 0;
+    transform: rotate(45deg);
+    background: var(--color-primary);
+  }
+
+  .mobile-menu-toggle.is-active .hamburger::after {
+    top: 0;
+    transform: rotate(-45deg);
+    background: var(--color-primary);
   }
 
   .nav-list {
