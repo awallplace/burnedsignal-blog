@@ -1,0 +1,135 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 700">
+  <defs>
+    <linearGradient id="cardGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#1a1a1a"/>
+      <stop offset="100%" style="stop-color:#0d0d0d"/>
+    </linearGradient>
+    <filter id="glow">
+      <feGaussianBlur stdDeviation="2" result="coloredBlur"/>
+      <feMerge>
+        <feMergeNode in="coloredBlur"/>
+        <feMergeNode in="SourceGraphic"/>
+      </feMerge>
+    </filter>
+  </defs>
+  
+  <!-- Background -->
+  <rect width="900" height="700" fill="#0a0a0a"/>
+  
+  <!-- Grid -->
+  <g stroke="#141414" stroke-width="1" opacity="0.3">
+    <line x1="0" y1="100" x2="900" y2="100"/>
+    <line x1="0" y1="200" x2="900" y2="200"/>
+    <line x1="0" y1="300" x2="900" y2="300"/>
+    <line x1="0" y1="400" x2="900" y2="400"/>
+    <line x1="0" y1="500" x2="900" y2="500"/>
+    <line x1="0" y1="600" x2="900" y2="600"/>
+    <line x1="150" y1="0" x2="150" y2="700"/>
+    <line x1="300" y1="0" x2="300" y2="700"/>
+    <line x1="450" y1="0" x2="450" y2="700"/>
+    <line x1="600" y1="0" x2="600" y2="700"/>
+    <line x1="750" y1="0" x2="750" y2="700"/>
+  </g>
+  
+  <!-- Title -->
+  <text x="450" y="40" text-anchor="middle" fill="#e5e5e5" font-family="monospace" font-size="26" font-weight="bold">INTELLIGENCE COLLECTION DISCIPLINES</text>
+  <text x="450" y="65" text-anchor="middle" fill="#666" font-family="monospace" font-size="13">The "INTs" - Specialized Sources and Methods</text>
+  
+  <!-- Central hub -->
+  <circle cx="450" cy="350" r="60" fill="#1a1a1a" stroke="#ff6b00" stroke-width="2"/>
+  <text x="450" y="340" text-anchor="middle" fill="#ff6b00" font-family="monospace" font-size="14" font-weight="bold">ALL-SOURCE</text>
+  <text x="450" y="358" text-anchor="middle" fill="#ff6b00" font-family="monospace" font-size="14" font-weight="bold">FUSION</text>
+  <text x="450" y="375" text-anchor="middle" fill="#666" font-family="monospace" font-size="9">Integration</text>
+  
+  <!-- Connection lines to center -->
+  <g fill="none" stroke="#333" stroke-width="1" stroke-dasharray="4,4">
+    <line x1="450" y1="290" x2="450" y2="175"/>
+    <line x1="510" y1="330" x2="615" y2="245"/>
+    <line x1="510" y1="370" x2="615" y2="455"/>
+    <line x1="450" y1="410" x2="450" y2="525"/>
+    <line x1="390" y1="370" x2="285" y2="455"/>
+    <line x1="390" y1="330" x2="285" y2="245"/>
+  </g>
+  
+  <!-- HUMINT Card (Top) -->
+  <g transform="translate(450, 130)">
+    <rect x="-80" y="-40" width="160" height="90" rx="8" fill="url(#cardGrad)" stroke="#ff6b00" stroke-width="2"/>
+    <text x="0" y="-18" text-anchor="middle" fill="#ff6b00" font-family="monospace" font-size="16" font-weight="bold" filter="url(#glow)">HUMINT</text>
+    <text x="0" y="0" text-anchor="middle" fill="#888" font-family="monospace" font-size="9">Human Intelligence</text>
+    <line x1="-60" y1="12" x2="60" y2="12" stroke="#333" stroke-width="1"/>
+    <text x="0" y="28" text-anchor="middle" fill="#666" font-family="monospace" font-size="8">Sources, agents</text>
+    <text x="0" y="40" text-anchor="middle" fill="#666" font-family="monospace" font-size="8">interviews, elicitation</text>
+  </g>
+  
+  <!-- SIGINT Card (Top Right) -->
+  <g transform="translate(700, 210)">
+    <rect x="-80" y="-40" width="160" height="90" rx="8" fill="url(#cardGrad)" stroke="#3498db" stroke-width="2"/>
+    <text x="0" y="-18" text-anchor="middle" fill="#3498db" font-family="monospace" font-size="16" font-weight="bold">SIGINT</text>
+    <text x="0" y="0" text-anchor="middle" fill="#888" font-family="monospace" font-size="9">Signals Intelligence</text>
+    <line x1="-60" y1="12" x2="60" y2="12" stroke="#333" stroke-width="1"/>
+    <text x="0" y="28" text-anchor="middle" fill="#666" font-family="monospace" font-size="8">COMINT · ELINT</text>
+    <text x="0" y="40" text-anchor="middle" fill="#666" font-family="monospace" font-size="8">RF intercepts, traffic</text>
+  </g>
+  
+  <!-- OSINT Card (Bottom Right) -->
+  <g transform="translate(700, 490)">
+    <rect x="-80" y="-40" width="160" height="90" rx="8" fill="url(#cardGrad)" stroke="#27ae60" stroke-width="2"/>
+    <text x="0" y="-18" text-anchor="middle" fill="#27ae60" font-family="monospace" font-size="16" font-weight="bold">OSINT</text>
+    <text x="0" y="0" text-anchor="middle" fill="#888" font-family="monospace" font-size="9">Open Source Intel</text>
+    <line x1="-60" y1="12" x2="60" y2="12" stroke="#333" stroke-width="1"/>
+    <text x="0" y="28" text-anchor="middle" fill="#666" font-family="monospace" font-size="8">Public data, media</text>
+    <text x="0" y="40" text-anchor="middle" fill="#666" font-family="monospace" font-size="8">social, academic</text>
+  </g>
+  
+  <!-- GEOINT Card (Bottom) -->
+  <g transform="translate(450, 570)">
+    <rect x="-80" y="-40" width="160" height="90" rx="8" fill="url(#cardGrad)" stroke="#9b59b6" stroke-width="2"/>
+    <text x="0" y="-18" text-anchor="middle" fill="#9b59b6" font-family="monospace" font-size="16" font-weight="bold">GEOINT</text>
+    <text x="0" y="0" text-anchor="middle" fill="#888" font-family="monospace" font-size="9">Geospatial Intelligence</text>
+    <line x1="-60" y1="12" x2="60" y2="12" stroke="#333" stroke-width="1"/>
+    <text x="0" y="28" text-anchor="middle" fill="#666" font-family="monospace" font-size="8">Imagery, satellite</text>
+    <text x="0" y="40" text-anchor="middle" fill="#666" font-family="monospace" font-size="8">mapping, location</text>
+  </g>
+  
+  <!-- MASINT Card (Bottom Left) -->
+  <g transform="translate(200, 490)">
+    <rect x="-80" y="-40" width="160" height="90" rx="8" fill="url(#cardGrad)" stroke="#e74c3c" stroke-width="2"/>
+    <text x="0" y="-18" text-anchor="middle" fill="#e74c3c" font-family="monospace" font-size="16" font-weight="bold">MASINT</text>
+    <text x="0" y="0" text-anchor="middle" fill="#888" font-family="monospace" font-size="9">Measurement/Signature</text>
+    <line x1="-60" y1="12" x2="60" y2="12" stroke="#333" stroke-width="1"/>
+    <text x="0" y="28" text-anchor="middle" fill="#666" font-family="monospace" font-size="8">Radar, acoustic</text>
+    <text x="0" y="40" text-anchor="middle" fill="#666" font-family="monospace" font-size="8">nuclear, chemical</text>
+  </g>
+  
+  <!-- FININT Card (Top Left) -->
+  <g transform="translate(200, 210)">
+    <rect x="-80" y="-40" width="160" height="90" rx="8" fill="url(#cardGrad)" stroke="#f39c12" stroke-width="2"/>
+    <text x="0" y="-18" text-anchor="middle" fill="#f39c12" font-family="monospace" font-size="16" font-weight="bold">FININT</text>
+    <text x="0" y="0" text-anchor="middle" fill="#888" font-family="monospace" font-size="9">Financial Intelligence</text>
+    <line x1="-60" y1="12" x2="60" y2="12" stroke="#333" stroke-width="1"/>
+    <text x="0" y="28" text-anchor="middle" fill="#666" font-family="monospace" font-size="8">Transactions, flows</text>
+    <text x="0" y="40" text-anchor="middle" fill="#666" font-family="monospace" font-size="8">sanctions, laundering</text>
+  </g>
+  
+  <!-- Additional INTs at bottom -->
+  <g transform="translate(450, 665)">
+    <rect x="-380" y="-18" width="760" height="36" rx="5" fill="#141414" stroke="#333" stroke-width="1"/>
+    <text x="-300" y="5" fill="#888" font-family="monospace" font-size="11">Additional:</text>
+    <text x="-180" y="5" fill="#555" font-family="monospace" font-size="11">TECHINT · IMINT · SOCMINT · MEDINT · CTI</text>
+  </g>
+  
+  <!-- Legend -->
+  <g transform="translate(50, 100)">
+    <rect x="0" y="0" width="130" height="80" rx="5" fill="#0d0d0d" stroke="#333" stroke-width="1"/>
+    <text x="65" y="18" text-anchor="middle" fill="#888" font-family="monospace" font-size="9" font-weight="bold">OLDEST → NEWEST</text>
+    <circle cx="20" cy="35" r="6" fill="#ff6b00"/>
+    <text x="35" y="38" fill="#666" font-family="monospace" font-size="8">HUMINT (ancient)</text>
+    <circle cx="20" cy="52" r="6" fill="#3498db"/>
+    <text x="35" y="55" fill="#666" font-family="monospace" font-size="8">SIGINT (1900s)</text>
+    <circle cx="20" cy="69" r="6" fill="#27ae60"/>
+    <text x="35" y="72" fill="#666" font-family="monospace" font-size="8">OSINT (1980s)</text>
+  </g>
+  
+  <!-- Footer -->
+  <text x="450" y="695" text-anchor="middle" fill="#333" font-family="monospace" font-size="10">burnedsignal.com | Intelligence Fundamentals</text>
+</svg>

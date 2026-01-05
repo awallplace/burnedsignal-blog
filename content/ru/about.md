@@ -1,17 +1,17 @@
 ---
-title: "O Proekte"
+title: "О проекте"
 slug: "about"
 layout: "about"
 ---
 
-## O burnedsignal
+## О burnedsignal
 
-burnedsignal - eto blog, posvyashchennyy kiberbezopasnosti, razvedke i tsifrovoy konfidentsialnosti.
+burnedsignal - это блог, посвящённый кибербезопасности, разведке и цифровой конфиденциальности.
 
-### Missiya
+### Миссия
 
-Preodolet razryv mezhdu traditsionnym razvedyvatelnym remeslom i sovremennymi operatsiyami po bor'be s kiberprestupleniyami.
+Преодолеть разрыв между традиционным разведывательным ремеслом и современными операциями по борьбе с киберугрозами.
 
-### Kontakt
+### Контакт
 
-Svyazhites' s nami cherez GitHub.
+Свяжитесь с нами через GitHub.

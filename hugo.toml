@@ -59,52 +59,52 @@ enableEmoji = false
         weight = 4
 
   [languages.ru]
-    languageName = "Russkiy"
+    languageName = "Русский"
     languageCode = "ru"
     contentDir = "content/ru"
     weight = 2
     [languages.ru.params]
-      description = "Blog o Kiberbezopasnosti i Razvedke"
+      description = "Блог о кибербезопасности и разведке"
     [languages.ru.menus]
       [[languages.ru.menus.main]]
-        name = "Glavnaya"
+        name = "Главная"
         url = "/"
         weight = 1
       [[languages.ru.menus.main]]
-        name = "Stati"
+        name = "Статьи"
         url = "/posts/"
         weight = 2
       [[languages.ru.menus.main]]
-        name = "O Nas"
+        name = "О нас"
         url = "/about/"
         weight = 3
       [[languages.ru.menus.main]]
-        name = "Arkhiv"
+        name = "Архив"
         url = "/archive/"
         weight = 4
 
   [languages.zh]
-    languageName = "Zhongwen"
+    languageName = "中文"
     languageCode = "zh"
     contentDir = "content/zh"
     weight = 4
     [languages.zh.params]
-      description = "Wang Luo An Quan Yu Qing Bao Bo Ke"
+      description = "网络安全与情报博客"
     [languages.zh.menus]
       [[languages.zh.menus.main]]
-        name = "Shou Ye"
+        name = "首页"
         url = "/"
         weight = 1
       [[languages.zh.menus.main]]
-        name = "Wen Zhang"
+        name = "文章"
         url = "/posts/"
         weight = 2
       [[languages.zh.menus.main]]
-        name = "Guan Yu"
+        name = "关于"
         url = "/about/"
         weight = 3
       [[languages.zh.menus.main]]
-        name = "Dang An"
+        name = "档案"
         url = "/archive/"
         weight = 4
 

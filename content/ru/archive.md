@@ -1,5 +1,5 @@
 ---
-title: "Arkhiv"
+title: "Архив"
 slug: "archive"
 layout: "archive"
 ---

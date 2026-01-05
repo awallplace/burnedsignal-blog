@@ -1,0 +1,148 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 600">
+  <defs>
+    <linearGradient id="strategicGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" style="stop-color:#ff6b00"/>
+      <stop offset="100%" style="stop-color:#cc5500"/>
+    </linearGradient>
+    <linearGradient id="operationalGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" style="stop-color:#3498db"/>
+      <stop offset="100%" style="stop-color:#2980b9"/>
+    </linearGradient>
+    <linearGradient id="tacticalGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" style="stop-color:#27ae60"/>
+      <stop offset="100%" style="stop-color:#1e8449"/>
+    </linearGradient>
+    <filter id="glow">
+      <feGaussianBlur stdDeviation="2" result="coloredBlur"/>
+      <feMerge>
+        <feMergeNode in="coloredBlur"/>
+        <feMergeNode in="SourceGraphic"/>
+      </feMerge>
+    </filter>
+  </defs>
+  
+  <!-- Background -->
+  <rect width="900" height="600" fill="#0a0a0a"/>
+  
+  <!-- Grid -->
+  <g stroke="#141414" stroke-width="1" opacity="0.3">
+    <line x1="0" y1="100" x2="900" y2="100"/>
+    <line x1="0" y1="200" x2="900" y2="200"/>
+    <line x1="0" y1="300" x2="900" y2="300"/>
+    <line x1="0" y1="400" x2="900" y2="400"/>
+    <line x1="0" y1="500" x2="900" y2="500"/>
+    <line x1="200" y1="0" x2="200" y2="600"/>
+    <line x1="400" y1="0" x2="400" y2="600"/>
+    <line x1="600" y1="0" x2="600" y2="600"/>
+    <line x1="800" y1="0" x2="800" y2="600"/>
+  </g>
+  
+  <!-- Title -->
+  <text x="450" y="40" text-anchor="middle" fill="#e5e5e5" font-family="monospace" font-size="24" font-weight="bold">INTELLIGENCE LEVELS</text>
+  <text x="450" y="62" text-anchor="middle" fill="#666" font-family="monospace" font-size="12">Decision Horizons and Consumer Requirements</text>
+  
+  <!-- Time axis label - moved right -->
+  <g transform="translate(70, 320)">
+    <line x1="0" y1="-180" x2="0" y2="180" stroke="#444" stroke-width="1"/>
+    <polygon points="0,-180 -5,-165 5,-165" fill="#444"/>
+    <polygon points="0,180 -5,165 5,165" fill="#444"/>
+    <text x="-25" y="-100" fill="#666" font-family="monospace" font-size="9" transform="rotate(-90 -25 -100)">LONGER HORIZON</text>
+    <text x="-25" y="130" fill="#666" font-family="monospace" font-size="9" transform="rotate(-90 -25 130)">SHORTER HORIZON</text>
+  </g>
+  
+  <!-- Strategic Level -->
+  <g transform="translate(440, 150)">
+    <rect x="-320" y="-45" width="600" height="110" rx="10" fill="#1a1a1a" stroke="url(#strategicGrad)" stroke-width="3"/>
+    
+    <!-- Left badge -->
+    <rect x="-310" y="-35" width="100" height="90" rx="8" fill="url(#strategicGrad)" filter="url(#glow)"/>
+    <text x="-260" y="-8" text-anchor="middle" fill="#0a0a0a" font-family="monospace" font-size="14" font-weight="bold">STRATEGIC</text>
+    <text x="-260" y="12" text-anchor="middle" fill="#1a1a1a" font-family="monospace" font-size="9">12-36 months</text>
+    <text x="-260" y="32" text-anchor="middle" fill="#1a1a1a" font-family="monospace" font-size="8">Big picture</text>
+    
+    <!-- Content -->
+    <g fill="#888" font-family="monospace" font-size="10">
+      <text x="-180" y="-20" fill="#ff6b00" font-weight="bold">AUDIENCE:</text>
+      <text x="-95" y="-20">Executives, Board, Policy Makers</text>
+      
+      <text x="-180" y="2" fill="#ff6b00" font-weight="bold">FOCUS:</text>
+      <text x="-95" y="2">Threat landscape, risk posture, priorities</text>
+      
+      <text x="-180" y="24" fill="#ff6b00" font-weight="bold">EXAMPLE:</text>
+      <text x="-95" y="24" fill="#666" font-style="italic">"Nation-states target supply chains"</text>
+    </g>
+  </g>
+  
+  <!-- Operational Level -->
+  <g transform="translate(440, 310)">
+    <rect x="-320" y="-45" width="600" height="110" rx="10" fill="#1a1a1a" stroke="url(#operationalGrad)" stroke-width="3"/>
+    
+    <!-- Left badge -->
+    <rect x="-310" y="-35" width="100" height="90" rx="8" fill="url(#operationalGrad)"/>
+    <text x="-260" y="-8" text-anchor="middle" fill="#0a0a0a" font-family="monospace" font-size="13" font-weight="bold">OPERATIONAL</text>
+    <text x="-260" y="12" text-anchor="middle" fill="#1a1a1a" font-family="monospace" font-size="9">Weeks-Months</text>
+    <text x="-260" y="32" text-anchor="middle" fill="#1a1a1a" font-family="monospace" font-size="8">Campaigns</text>
+    
+    <!-- Content -->
+    <g fill="#888" font-family="monospace" font-size="10">
+      <text x="-180" y="-20" fill="#3498db" font-weight="bold">AUDIENCE:</text>
+      <text x="-95" y="-20">Security Managers, IR Teams, Hunt Teams</text>
+      
+      <text x="-180" y="2" fill="#3498db" font-weight="bold">FOCUS:</text>
+      <text x="-95" y="2">Campaign analysis, threat actor profiles, TTPs</text>
+      
+      <text x="-180" y="24" fill="#3498db" font-weight="bold">EXAMPLE:</text>
+      <text x="-95" y="24" fill="#666" font-style="italic">"APT41 shifted to LOTL techniques in Q4"</text>
+    </g>
+  </g>
+  
+  <!-- Tactical Level -->
+  <g transform="translate(440, 470)">
+    <rect x="-320" y="-45" width="600" height="110" rx="10" fill="#1a1a1a" stroke="url(#tacticalGrad)" stroke-width="3"/>
+    
+    <!-- Left badge -->
+    <rect x="-310" y="-35" width="100" height="90" rx="8" fill="url(#tacticalGrad)"/>
+    <text x="-260" y="-8" text-anchor="middle" fill="#0a0a0a" font-family="monospace" font-size="14" font-weight="bold">TACTICAL</text>
+    <text x="-260" y="12" text-anchor="middle" fill="#1a1a1a" font-family="monospace" font-size="9">Hours-Days</text>
+    <text x="-260" y="32" text-anchor="middle" fill="#1a1a1a" font-family="monospace" font-size="8">Immediate</text>
+    
+    <!-- Content -->
+    <g fill="#888" font-family="monospace" font-size="10">
+      <text x="-180" y="-20" fill="#27ae60" font-weight="bold">AUDIENCE:</text>
+      <text x="-95" y="-20">SOC Analysts, Detection Engineers, IR</text>
+      
+      <text x="-180" y="2" fill="#27ae60" font-weight="bold">FOCUS:</text>
+      <text x="-95" y="2">IOCs, detection signatures, specific TTPs</text>
+      
+      <text x="-180" y="24" fill="#27ae60" font-weight="bold">EXAMPLE:</text>
+      <text x="-95" y="24" fill="#666" font-style="italic">"Block hash abc123, IP 45.33.32.156"</text>
+    </g>
+  </g>
+  
+  <!-- Right side insight box -->
+  <g transform="translate(810, 310)">
+    <rect x="-55" y="-140" width="110" height="280" rx="5" fill="#141414" stroke="#ff6b00" stroke-width="1" stroke-dasharray="4,2"/>
+    <text x="0" y="-118" text-anchor="middle" fill="#ff6b00" font-family="monospace" font-size="9" font-weight="bold">⚠ INSIGHT</text>
+    
+    <text x="0" y="-90" text-anchor="middle" fill="#666" font-family="monospace" font-size="8">Most orgs</text>
+    <text x="0" y="-78" text-anchor="middle" fill="#666" font-family="monospace" font-size="8">over-invest in</text>
+    <text x="0" y="-60" text-anchor="middle" fill="#27ae60" font-family="monospace" font-size="10" font-weight="bold">TACTICAL</text>
+    <text x="0" y="-45" text-anchor="middle" fill="#666" font-family="monospace" font-size="8">(IOC feeds)</text>
+    
+    <text x="0" y="-15" text-anchor="middle" fill="#666" font-family="monospace" font-size="8">while under-</text>
+    <text x="0" y="-3" text-anchor="middle" fill="#666" font-family="monospace" font-size="8">investing in</text>
+    
+    <text x="0" y="20" text-anchor="middle" fill="#ff6b00" font-family="monospace" font-size="9" font-weight="bold">STRATEGIC</text>
+    <text x="0" y="35" text-anchor="middle" fill="#666" font-family="monospace" font-size="8">&amp;</text>
+    <text x="0" y="50" text-anchor="middle" fill="#3498db" font-family="monospace" font-size="9" font-weight="bold">OPERATIONAL</text>
+    
+    <line x1="-40" y1="70" x2="40" y2="70" stroke="#333" stroke-width="1"/>
+    
+    <text x="0" y="90" text-anchor="middle" fill="#888" font-family="monospace" font-size="7">IOCs are</text>
+    <text x="0" y="102" text-anchor="middle" fill="#888" font-family="monospace" font-size="7">perishable.</text>
+    <text x="0" y="120" text-anchor="middle" fill="#ff6b00" font-family="monospace" font-size="8" font-weight="bold">Balance all 3!</text>
+  </g>
+  
+  <!-- Footer -->
+  <text x="450" y="585" text-anchor="middle" fill="#333" font-family="monospace" font-size="10">burnedsignal.com | Intelligence Fundamentals</text>
+</svg>

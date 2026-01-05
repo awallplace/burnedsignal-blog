@@ -1,35 +1,35 @@
 ---
-title: "Guan Yu"
-description: "Guan Yu burnedsignal He Wo Men De Shi Ming"
+title: "关于"
+description: "关于 burnedsignal 和我们的使命"
 ---
 
-## Guan Yu burnedsignal
+## 关于 burnedsignal
 
-burnedsignal Shi Yi Ge Zhi Li Yu Jie Lu Na Xie Ying Gai Bao Chi Yin Cang De Nei Rong De Wang Luo An Quan He Qing Bao Bo Ke. Wo Men Fen Xi Wei Xie, Diao Cha Lou Dong, Bing Fen Xiang Shu Zi An Quan Zhi Shi.
+burnedsignal 是一个致力于揭露那些应该保持隐藏的内容的网络安全和情报博客。我们分析威胁、调查漏洞，并分享数字安全知识。
 
-### Wo Men De Shi Ming
+### 我们的使命
 
-Zai Shu Zi Wei Xie Bi Fang Yu Geng Kuai Yan Bian De Shi Dai, Wo Men De Mu Biao Shi:
+在数字威胁比防御更快演变的时代，我们的目标是：
 
-- **Jiao Yu** - Fen Xiang Ke Cao Zuo De Qing Bao He Fen Xi
-- **Jie Lu** - Fa Xian Lou Dong He Wei Xie Xing Wei Zhe
-- **Zeng Qiang** - Bang Zhu Zu Zhi He Ge Ren Bao Hu Zi Ji
+- **教育** - 分享可操作的情报和分析
+- **揭露** - 发现漏洞和威胁行为者
+- **增强** - 帮助组织和个人保护自己
 
-### Wo Men De Nei Rong
+### 我们的内容
 
-- Wei Xie Qing Bao He APT Fen Xi
-- Lou Dong Yan Jiu He Pi Lu
-- OSINT Ji Shu He Fang Fa
-- Shu Zi Qu Zheng He Shi Jian Xiang Ying
-- Yin Si He Cao Zuo An Quan
-- Xin Xing Ji Shu Ji Qi An Quan Ying Xiang
+- 威胁情报和 APT 分析
+- 漏洞研究和披露
+- OSINT 技术和方法
+- 数字取证和事件响应
+- 隐私和操作安全
+- 新兴技术及其安全影响
 
-### Lian Xi Fang Shi
+### 联系方式
 
-Ru Guo You Ti Shi, Zi Xun Huo He Zuo:
+如果有提示、咨询或合作：
 - Email: contact [at] burnedsignal.io
-- PGP: Ying Yao Qiu Ti Gong
+- PGP: 应要求提供
 
 ---
 
-*Xin Hao Ke Neng Yi Jing Ran Shao, Dan Zhen Xiang Reng Ran Cun Zai.*
+*信号可能已经燃烧，但真相仍然存在。*

@@ -1,3 +1,3 @@
 ---
-title: "Stati"
+title: "Статьи"
 ---

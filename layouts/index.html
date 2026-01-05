@@ -6,8 +6,8 @@
     </h1>
     <p class="hero-tagline">{{ site.Params.tagline }}</p>
     <p class="hero-description">
-      {{ if eq .Lang "ru" }}Glubokiy analiz kiberbezopasnosti, razvedki i tsifrovoy konfidentsialnosti.
-      {{ else if eq .Lang "zh" }}Guan Yu Wang Luo An Quan, Qing Bao He Shu Zi Yin Si De Shen Du Fen Xi.
+      {{ if eq .Lang "ru" }}Глубокий анализ кибербезопасности, разведки и цифровой конфиденциальности.
+      {{ else if eq .Lang "zh" }}关于网络安全、情报和数字隐私的深度分析。
       {{ else }}Deep dives into cybersecurity, intelligence, and digital privacy.{{ end }}
     </p>
   </div>
@@ -34,13 +34,13 @@
 <section class="recent-posts">
   <header class="section-header">
     <h2 class="section-title">
-      {{ if eq .Lang "ru" }}Poslednie Stati
-      {{ else if eq .Lang "zh" }}Zui Xin Wen Zhang
+      {{ if eq .Lang "ru" }}Последние статьи
+      {{ else if eq .Lang "zh" }}最新文章
       {{ else }}Recent Posts{{ end }}
     </h2>
     <a href="{{ "posts/" | relLangURL }}" class="view-all">
-      {{ if eq .Lang "ru" }}Smotret Vse
-      {{ else if eq .Lang "zh" }}Cha Kan Quan Bu
+      {{ if eq .Lang "ru" }}Смотреть все
+      {{ else if eq .Lang "zh" }}查看全部
       {{ else }}View all{{ end }}
       <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
         <path d="M6 3L11 8L6 13" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
@@ -72,8 +72,8 @@
     </article>
     {{ else }}
     <p class="no-posts">
-      {{ if eq .Lang "ru" }}Statey poka net.
-      {{ else if eq .Lang "zh" }}Zan Wu Wen Zhang.
+      {{ if eq .Lang "ru" }}Статей пока нет.
+      {{ else if eq .Lang "zh" }}暂无文章。
       {{ else }}No posts yet.{{ end }}
     </p>
     {{ end }}
@@ -85,8 +85,8 @@
 <section class="tags-section">
   <header class="section-header">
     <h2 class="section-title">
-      {{ if eq .Lang "ru" }}Tegi
-      {{ else if eq .Lang "zh" }}Biao Qian
+      {{ if eq .Lang "ru" }}Теги
+      {{ else if eq .Lang "zh" }}标签
       {{ else }}Tags{{ end }}
     </h2>
   </header>

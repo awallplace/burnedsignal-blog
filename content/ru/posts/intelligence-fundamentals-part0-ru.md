@@ -1,14 +1,14 @@
 ---
-title: "Osnovy Razvedki: Ot Syryh Dannyh k Deystvennoy Razvedke"
+title: "Основы разведки: от сырых данных к действенной разведке"
 slug: "intelligence-fundamentals-part-0"
 date: 2026-01-05
 draft: false
-series: "Osnovy Razvedki"
+series: "Основы разведки"
 series_order: 0
 tags: ["intelligence", "OSINT", "SIGINT", "HUMINT", "threat-intelligence", "CTI", "fundamentals", "analysis"]
 categories: ["Intelligence"]
 keywords: ["intelligence cycle", "DIKW pyramid", "threat intelligence", "OSINT", "SIGINT", "HUMINT", "source reliability", "cognitive bias", "attribution"]
-description: "Kompleksnoe pogruzhenie v osnovy razvedyvatelnoy deyatelnosti. Ponimanie konveyera dannyh-k-mudrosti, distsiplin sbora (INT), razvedyvatelnogo tsikla, otsenki istochnikov, kognitivnyh predraspolozheniy i kak eti kontseptsii primenyayutsya k sovremennoy kiberrazvedke."
+description: "Комплексное погружение в основы разведывательной деятельности. Понимание конвейера данных-к-мудрости, дисциплин сбора (INT), разведывательного цикла, оценки источников, когнитивных предрасположенностей и как эти концепции применяются к современной киберразведке."
 author: "burnedsignal"
 toc: true
 reading_time: "25 min"
@@ -16,481 +16,546 @@ reading_time: "25 min"
 
 ## TL;DR
 
-Razvedka — eto ne prosto sbor dannyh — eto sistematicheskoe preobrazovanie syroy informatsii v deystvennye vyvody, kotorye upravlyayut prinyatiem resheniy. Eta osnovopolagayushchaya statya okhvatyvaet:
+Разведка — это не просто сбор данных — это систематическое преобразование сырой информации в действенные выводы, которые управляют принятием решений. Эта основополагающая статья охватывает:
 
-- **Piramida DIKW**: Progressiya Dannye → Informatsiya → Znaniya → Mudrost
-- **Urovni Razvedki**: Strategicheskie, Operativnye i Takticheskie razlichiya
-- **Distsipliny Sbora (INT)**: HUMINT, SIGINT, OSINT, GEOINT, MASINT, FININT
-- **Razvedyvatelnyy Tsikl**: Nepreryvnyy 6-faznyy protsess ot trebovaniy do obratnoy svyazi
-- **Otsenka Istochnikov**: Sistema Admiralteystva dlya otsenki nadezhnosti i dostovernosti
-- **Kognitivnye Predraspolozheniya**: Tikhie ubiyty kachestvennogo razvedyvatelnogo analiza
-- **Problemy Atributsii**: Pochemu "kto eto sdelal" slozhnee, chem kazhetsya
-- **Primenenie k Kiberrazvedke (CTI)**: Kak traditsionnye razvedyvatelnye kontseptsii sootnosyatsya s sovremennym obnaruzheniem ugroz
+- **Пирамида DIKW**: Прогрессия Данные → Информация → Знания → Мудрость
+- **Уровни разведки**: Стратегические, Оперативные и Тактические различия
+- **Дисциплины сбора (INT)**: HUMINT, SIGINT, OSINT, GEOINT, MASINT, FININT
+- **Разведывательный цикл**: Непрерывный 6-фазный процесс от требований до обратной связи
+- **Оценка источников**: Система Адмиралтейства для оценки надёжности и достоверности
+- **Когнитивные предрасположенности**: Тихие убийцы качественного разведывательного анализа
+- **Проблемы атрибуции**: Почему "кто это сделал" сложнее, чем кажется
+- **Применение к киберразведке (CTI)**: Как традиционные разведывательные концепции соотносятся с современным обнаружением угроз
 
 ---
 
-## Chto Takoe Razvedka?
+## Что такое разведка?
 
-Razvedka chasto nepravilno ponimaetsya. Eto ne prosto nakoplenie faktov i ne sinonim dannyh ili informatsii. Razvedka predstavlyaet soboy **ochishchennyy produkt** strogogo analiticheskogo protsessa — preobrazovanie razroznennyh tochek dannyh v kogerentnoe, kontekstnoe ponimanie, kotoroe pozvolyaet prinimat obosnovannye resheniya.
+Разведка часто неправильно понимается. Это не просто накопление фактов и не синоним данных или информации. Разведка представляет собой **очищенный продукт** строгого аналитического процесса — преобразование разрозненных точек данных в когерентное, контекстное понимание, которое позволяет принимать обоснованные решения.
 
-> "Razvedka — eto informatsiya, kotoraya byla sobrana, integrirována, otsenena, proanalizirovana i interpretirována."
+> "Разведка — это информация, которая была собрана, интегрирована, оценена, проанализирована и интерпретирована."
 > — Joint Publication 2-0, Joint Intelligence
 
-Eto razlichie vazhno. Datchik, obnaruzhivayushchiy setevoy trafik, proizvodit **dannye**. Kogda eti dannye razbiraet i korreliruet, oni stanovyatsya **informatsiey**. Kogda analitik opredelyaet, chto pattern trafika sootvetstvuet izvestnomu povedeniyu komandno-kontrolnogo servera, eto stanovitsya **znaniyami**. Kogda rukovodstvo ispolzuet eti znaniya dlya avtorizatsii zashchitnyh mer ili atributsii aktivnosti konkretnomu aktyoru ugroz, my priblizaemsya k **mudrosti**.
+Это различие важно. Датчик, обнаруживающий сетевой трафик, производит **данные**. Когда эти данные разбирает и коррелирует, они становятся **информацией**. Когда аналитик определяет, что паттерн трафика соответствует известному поведению командно-контрольного сервера, это становится **знаниями**. Когда руководство использует эти знания для авторизации защитных мер или атрибуции активности конкретному актору угроз, мы приближаемся к **мудрости**.
 
-**Kriticheskiy Moment**: Razvedka — eto ne istina — eto *otsenka* istiny na osnove nepolnoy informatsii. Kazhdyy razvedyvatelnyy produkt neset prisushchuyu neopredelennost, poetomu urovni doveriya i otsenka istochnikov yavlyayutsya fundamentalnymi dlya distsipliny.
+**Критический момент**: Разведка — это не истина — это *оценка* истины на основе неполной информации. Каждый разведывательный продукт несёт присущую неопределённость, поэтому уровни доверия и оценка источников являются фундаментальными для дисциплины.
 
 ---
 
-## Piramida DIKW: Ot Shuma k Insaytu
+## Пирамида DIKW: от шума к инсайту
 
-Ierarkhiya Dannye-Informatsiya-Znaniya-Mudrost (DIKW) predostavlyaet fundamentalnuyu strukturu dlya ponimaniya togo, kak syrye vhody transformiruyutsya v deystvennuyu razvedku.
+Иерархия Данные-Информация-Знания-Мудрость (DIKW) предоставляет фундаментальную структуру для понимания того, как сырые входы трансформируются в действенную разведку.
 
 ![DIKW Pyramid](/images/intelligence-fundamentals/dikw-pyramid.svg)
 
-### Dannye (Chto?)
+### Данные (Что?)
 
-Syrye, neobrabotannye fakty bez konteksta. V kiberoperatsiyah eto vklyuchaet:
-- Zakhvaty paketov
-- Zapisi logov
-- Heshi faylov
-- IP-adresa
-- DNS-zaprosy
+Сырые, необработанные факты без контекста. В кибероператорациях это включает:
+- Захват пакетов
+- Записи логов
+- Хеши файлов
+- IP-адреса
+- DNS-запросы
 
-Odni dannye otvechayut na vopros "Chto proizoshlo?", no ne predostavlyayut smysla.
+Данные сами по себе отвечают на вопрос "Что произошло?", но не предоставляют значения.
 
-**Primer**: `192.168.1.105 connected to 45.33.32.156:443 at 03:42:17 UTC`
+**Пример**: `192.168.1.105 connected to 45.33.32.156:443 at 03:42:17 UTC`
 
-### Informatsiya (Kto, Kogda, Gde?)
+### Информация (Кто, Когда, Где?)
 
-Dannye stanovyatsya informatsiey, kogda organizovany, strukturirovany i poluchayut kontekst. Informatsiya otvechaet na bazovye voprosy.
+Данные становятся информацией, когда организованы, структурированы и получают контекст. Информация отвечает на базовые вопросы.
 
-**Primer**: "Rabochaya stantsiya WS-105, naznachennaya polzovatelyu john.doe v finansovom otdele, ustanovila zashifrovannoe soedinenie s IP-adresom, gelokalizovannym v Sankt-Peterburge, Rossiya, v nerabochee vremya."
+**Пример**: "Рабочая станция WS-105, назначенная пользователю john.doe из финансового отдела, установила зашифрованное соединение с IP-адресом, геолоцированным в Санкт-Петербурге, Россия, в нерабочее время."
 
-### Znaniya (Kak? Pochemu?)
+### Знания (Как? Почему?)
 
-Znaniya voznikayut iz analiza patternov, korrelyatsii neskolkih istochnikov informatsii i primeneniya ekspertizy. Oni obespechivayut ponimanie mekhanizmov i motivatsiy.
+Знания появляются из анализа паттернов, корреляции множества источников информации и применения экспертизы. Они обеспечивают понимание механизмов и мотивации.
 
-**Primer**: "Etot pattern soedineniya sootvetstvuet izvestnomu povedeniyu mayaka Cobalt Strike. IP-adres naznacheniya svyazan s infrastrukturoy, ranee atributirovannoy APT29. Finansovyy otdel imeet dostup k sensityvnoy dokumentatsii M&A. Veroyatno, eto predstavlyaet nachalnyy dostup sofistizirovannogo aktyora ugroz, osushchestvlyayushchego ekonomicheskiy shpionazh."
+**Пример**: "Этот паттерн соединения соответствует известному поведению маяка Cobalt Strike. Целевой IP связан с инфраструктурой, ранее атрибутированной APT29. Финансовый отдел имеет доступ к конфиденциальным документам M&A. Это, вероятно, представляет начальный доступ продвинутого актора угроз, проводящего экономический шпионаж."
 
-### Mudrost (Chto Nam Delat?)
+### Мудрость (Что нам делать?)
 
-Mudrost sinteziruet znaniya s opytom, eticheskimi soobrazheniyami i strategicheskim kontekstom dlya informirovaniya resheniy. Ona obespechivaet predvidenie i optimalnyy vybor deystviy.
+Мудрость синтезирует знания с опытом, этическими соображениями и стратегическим контекстом для информирования решений. Она обеспечивает предвидение и оптимальный выбор действий.
 
-**Primer**: "Na osnove urovnya doveriya atributsii (UMERENNYY), potentsialnogo vozdeystviya na biznes i geopoliticheskogo konteksta my rekomenduem: (1) nemedlennuyu setevuyu izolyatsiyu zatronutyh sistem, (2) privlechenie gruppy reagirovaniya na intsidenty, (3) uvedomlenie yuridicheskogo konsultanta otnositelno potentsialnogo uchastiya natsionalnogo gosudarstva, (4) koordinatsiyu s partnerami po ISAC sektora, kotorye mogut stolknutsya s analogichnym targetingom."
-
----
-
-## Chetyre Kachestva Deystvennoy Razvedki
-
-Ne vsya razvedka sozdana ravnoy. Effektivnaya razvedka demonstriruet chetyre kriticheskie kharakteristiki:
-
-| Kachestvo | Opredelenie | Kontrprimer |
-|-----------|-------------|-------------|
-| **Deystvennaya** | Pozvolyaet prinimat konkretnye resheniya ili deystviya | "Plohie aktory sushchestvuyut v internete" |
-| **Svoevremennaуa** | Dostavlena kogda ona eshche mozhet povliyat na rezultaty | Otchet ob atributsii, pribyvayushchiy cherez 6 mesyatsev posle vzloma |
-| **Relevantnaya** | Otvechaet konkretnym trebovaniyam potrebitelya | Otpravka razvedki ugroz ICS/SCADA kompanii SaaS |
-| **Tochnaya** | Fakticheski pravilnaya s sootvetstvuyushchimi urovnyami doveriya | Oshibochnaya atributsiya tovarnogo vredonosnogo PO k APT |
-
-Akronim **ATRA** (Actionable, Timely, Relevant, Accurate) predostavlyaet poleznuyu mnemoniku dlya otsenki kachestva razvedki.
+**Пример**: "Основываясь на уровне доверия к атрибуции (УМЕРЕННЫЙ), потенциальном влиянии на бизнес и геополитическом контексте, мы рекомендуем: (1) немедленную сетевую изоляцию затронутых систем, (2) привлечение реагирования на инциденты, (3) уведомление юридического консультанта о потенциальном участии государственного актора, и (4) координацию с отраслевыми партнёрами ISAC, которые могут столкнуться с аналогичным таргетированием."
 
 ---
 
-## Otsenka Istochnikov: Sistema Admiralteystva
+## Четыре качества действенной разведки
+
+Не вся разведка создаётся равной. Эффективная разведка демонстрирует четыре критических характеристики:
+
+| Качество | Определение | Контрпример |
+|----------|-------------|-------------|
+| **Действенная** | Позволяет принимать конкретные решения или действия | "В интернете существуют плохие акторы" |
+| **Своевременная** | Доставляется, когда ещё может повлиять на результаты | Отчёт об атрибуции, прибывший через 6 месяцев после взлома |
+| **Релевантная** | Отвечает конкретным требованиям потребителя | Отправка разведки об угрозах ICS/SCADA компании SaaS |
+| **Точная** | Фактически правильная с соответствующими уровнями доверия | Неправильная атрибуция commodity-вредоносного ПО к APT |
+
+Аббревиатура **ATRA** (Actionable, Timely, Relevant, Accurate) предоставляет полезную мнемонику для оценки качества разведки.
+
+---
+
+## Оценка источников: система Адмиралтейства
 
 ![Source Reliability Matrix](/images/intelligence-fundamentals/source-reliability-matrix.svg)
 
-Prezhde chem lyubaya informatsiya stanet razvedkoy, ona dolzhna byt otsenena. Razvedyvatelnoe soobshchestvo ispolzuet standartizirovannye sistemy gradatsii dlya otsenki kak **nadezhnosti istochnika**, tak i **dostovernosti informatsii**.
+Прежде чем любая информация становится разведкой, она должна быть оценена. Разведывательное сообщество использует стандартизированные системы оценки для оценки как **надёжности источника**, так и **достоверности информации**.
 
-### Sistema Admiralteystva/NATO
+### Система Адмиралтейства/НАТО
 
-Eta dvuhosevaya sistema otsenki, takzhe izvestnaya kak "sistema 6x6" ili "Sistema NATO," yavlyaetsya standartom so vremeni Vtoroy mirovoy voyny:
+Эта двухосевая система оценки, также известная как "система 6x6" или "система НАТО", является стандартом со времён Второй мировой войны:
 
-#### Nadezhnost Istochnika (A-F)
+#### Надёжность источника (A-F)
 
-| Otsenka | Opisanie | Kriterii |
-|---------|----------|----------|
-| **A** | Polnostyu Nadezhnyy | Net somneniy v podlinnosti, nadezhnosti i kompetentnosti istochnika. Istoriya polnoy nadezhnosti. |
-| **B** | Obychno Nadezhnyy | Neznachitnye somneniya. Istoriya v osnovnom dostovernoy informatsii. |
-| **C** | Dostatochno Nadezhnyy | Somneniya sushchestvuyut. Predostavlyal dostovernuyu informatsiyu v proshlom. |
-| **D** | Obychno Nenadezhnyy | Znachitelnye somneniya. Istoriya chastichno dostovernoy, chastichno nedostovernoy informatsii. |
-| **E** | Nenadezhnyy | Otsutstvuet podlinnost, nadezhnost ili kompetentnost. Istoriya nedostovernoy informatsii. |
-| **F** | Nevozmozhno Otsenyt | Net osnovaniya dlya otsenki nadezhnosti. Novyy ili neizvestnyy istochnik. |
+| Оценка | Описание | Критерии |
+|--------|----------|----------|
+| **A** | Полностью надёжный | Нет сомнений в подлинности, достоверности и компетентности источника. История полной надёжности. |
+| **B** | Обычно надёжный | Незначительные сомнения. История преимущественно достоверной информации. |
+| **C** | Достаточно надёжный | Сомнения существуют. В прошлом предоставлял достоверную информацию. |
+| **D** | Обычно ненадёжный | Значительные сомнения. История частично достоверной, частично недостоверной информации. |
+| **E** | Ненадёжный | Отсутствие подлинности, достоверности или компетентности. История недостоверной информации. |
+| **F** | Невозможно оценить | Нет основы для оценки надёжности. Новый или неизвестный источник. |
 
-#### Dostovernost Informatsii (1-6)
+#### Достоверность информации (1-6)
 
-| Otsenka | Opisanie | Kriterii |
-|---------|----------|----------|
-| **1** | Podtverzhdeno | Podtverzhdeno nezavisimymi istochnikami. Logichno, soglasovano s drugoy informatsiey. |
-| **2** | Veroyatno Istinno | Ne podtverzhdeno, no logichno i soglasovano s drugoy informatsiey. |
-| **3** | Vozmozhno Istinno | Ne podtverzhdeno. Dostatochno logichno, no ogranichennoе podtverzhdenie. |
-| **4** | Somnitelno Istinno | Ne podtverzhdeno. Vozmozhno, no ne logichno. Net drugoy informatsii dlya podderzhki. |
-| **5** | Maloveroyatno | Ne podtverzhdeno. Ne logichno. Protivorechit drugoy informatsii. |
-| **6** | Nevozmozhno Otsenyt | Net osnovaniya dlya otsenki dostovernosti. |
+| Оценка | Описание | Критерии |
+|--------|----------|----------|
+| **1** | Подтверждено | Подтверждено независимыми источниками. Логично, согласуется с другой информацией. |
+| **2** | Вероятно истинно | Не подтверждено, но логично и согласуется с другой информацией. |
+| **3** | Возможно истинно | Не подтверждено. Разумно логично, но ограниченное подтверждение. |
+| **4** | Сомнительно истинно | Не подтверждено. Возможно, но не логично. Нет другой информации для поддержки. |
+| **5** | Маловероятно | Не подтверждено. Не логично. Противоречит другой информации. |
+| **6** | Невозможно оценить | Нет основы для оценки достоверности. |
 
-### Prakticheskoe Primenenie
+### Практическое применение
 
-**Primer Otsenki:**
+**Пример оценки:**
 
 ```
-Istochnik: Polzovatel andergrand-foruma "xShadowBrokerx" (aktiven 3 goda,
-        podtverzhdennaya istoriya prodazh, ranee tochnye utechki)
-Informatsiya: Zayavlyaet o predstoyashchey kampanii ransomware, napravlennoy na sektor zdravookhraneniya
+Источник: Пользователь подпольного форума "xShadowBrokerx" (активен 3 года,
+          подтверждённая история продаж, предыдущие точные утечки)
+Информация: Утверждает о предстоящей кампании ransomware, нацеленной на здравоохранение
 
-Otsenka: B2
-- Nadezhnost Istochnika: B (Obychno Nadezhnyy) - Ustanovlennoe prisutstvie, istoriya
-- Dostovernost Informatsii: 2 (Veroyatno Istinno) - Soglasovano s nablyudaemym
-  landshaftom ugroz, ne podtverzhdeno nezavisimo
+Оценка: B2
+- Надёжность источника: B (Обычно надёжный) - Установленное присутствие, послужной список
+- Достоверность информации: 2 (Вероятно истинно) - Согласуется с наблюдаемым
+  ландшафтом угроз, не подтверждено независимо
 ```
 
-**Pochemu Eto Vazhno**: Bez otsenki istochnika vy ne mozhete naznachit urovni doveriya vashim otsenkam. Analitik, kotoryy obrashchaetsya s istochnikom B1 tak zhe, kak s istochnikom E5, budet proizvodit musornuyu razvedku.
+**Почему это важно**: Без оценки источников вы не можете назначить уровни доверия вашим оценкам. Аналитик, который относится к источнику B1 так же, как к E5, будет производить мусорную разведку.
+
+### Киберспецифические соображения
+
+В CTI оценка источников распространяется на:
+
+| Тип источника | Факторы надёжности |
+|---------------|-------------------|
+| **Потоки разведки об угрозах** | Репутация поставщика, частота обновлений, уровень ложных срабатываний |
+| **Форумы даркнета** | Возраст аккаунта, оценка репутации, подтверждённые транзакции |
+| **Образцы вредоносного ПО** | Источник отправки, среда песочницы, глубина анализа |
+| **OSINT** | Достоверность публикации, экспертиза автора, подтверждение |
+| **Технические индикаторы** | Метод сбора, возраст, контекст |
 
 ---
 
-## Kognitivnye Predraspolozheniya: Tikhie Ubiyty
+## Когнитивные предрасположенности: тихие убийцы
 
 ![Cognitive Biases](/images/intelligence-fundamentals/cognitive-biases.svg)
 
-Neudachi razvedki redko svyazany s nedostatkom informatsii — oni svyazany s neudachami v analize. Kognitivnye predraspolozheniya — eto sistematicheskie oshibki v myshlenii, kotorye vliyayut na resheniya i suzhdeniya.
+Разведывательные неудачи редко происходят из-за недостатка информации — они происходят из-за сбоев в анализе. Когнитивные предрасположенности — это систематические ошибки в мышлении, которые влияют на решения и суждения.
 
-> "My vidim to, chto ozhidaem uvidet, a ne to, chto est na samom dele."
+> "Мы видим то, что ожидаем увидеть, а не то, что на самом деле есть."
 > — Richards Heuer, *Psychology of Intelligence Analysis*
 
-### Kriticheskie Predraspolozheniya dlya Razvedyvatelnyh Analitikov
+### Критические предрасположенности для разведывательных аналитиков
 
-#### Predraspolozheniye Podtverzhdeniya
-**Opredelenie**: Poisk, interpretatsiya i zapominanie informatsii, kotoraya podtverzhdaet ranee sushchestvuyushchie ubezhdeniya.
+#### Предрасположенность к подтверждению
+**Определение**: Поиск, интерпретация и запоминание информации, которая подтверждает уже существующие убеждения.
 
-**Istoricheskiy Primer**: Otsenka OMP Iraka (2002-2003). Analitiki sosredotochilis na informatsii, podderzhivayushchey sushchestvovanie programm OMP, otbrasyvaya protivorechivye dokazatelstva.
+**Исторический пример**: Оценка ОМУ Ирака (2002-2003). Аналитики сосредоточились на информации, поддерживающей существование программ ОМУ, игнорируя противоречащие доказательства. Предположение, что Саддам Хусейн *должен* иметь ОМУ, привело к избирательной интерпретации неоднозначных данных.
 
-**Snizhenie**: Advokatiya Dyavola, Analiz Konkuriruyushchikh Gipotez (ACH)
-
----
-
-#### Predraspolozheniye Yakorya
-**Opredelenie**: Chrezmernaya zavisimost ot pervoy poluchennoy informatsii ("yakorya").
-
-**Primer v CTI**: Nachalnaya atributsiya konkretnomu aktyoru ugroz stanovitsya yakorem. Vse posleduyushchie dokazatelstva interpretiruyutsya cherez etu prizmu.
-
-**Snizhenie**: Yavno dokumentirovat nachalnye predpolozheniya, regulyarno ih peresmotrivat
+**Смягчение**: Адвокат дьявола, Анализ конкурирующих гипотез (ACH)
 
 ---
 
-#### Zerkalnoye Otrazheniye
-**Opredelenie**: Predpolozhenie, chto protivniki dumayut i deystvuyut tak zhe, kak my by deystvovali v ikh situatsii.
+#### Предрасположенность к якорению
+**Определение**: Чрезмерная опора на первую встреченную информацию ("якорь").
 
-**Istoricheskiy Primer**: Pearl Harbor (1941). Amerikanskie analitiki predpolagali, chto Yaponiya ne atachuet, potomu chto eto bylo by "neratsionalno" s uchetom voennogo prevoskhodstva SShA.
+**Пример в CTI**: Начальная атрибуция конкретному актору угроз становится якорем. Все последующие доказательства интерпретируются через эту призму, даже когда они должны побудить к пересмотру.
 
-**Snizhenie**: Analiz Krasnoy Komandy, Kulturnaya ekspertiza
-
----
-
-#### Gruppovoe Myshlenie
-**Opredelenie**: Davlenie konformizma vnutri gruppy podavlyaet alternativnyy analiz.
-
-**Istoricheskiy Primer**: Zaliv Sviney (1961). Planirovshchiki TsRU ubedili sebya, chto vtorzhenie uspeet; nesoglasnyye golosa byli zaglusheny.
-
-**Snizhenie**: Strukturirovannoye nesoglasie (naznachenie roli "advokata dyavola")
+**Смягчение**: Явно документировать начальные предположения, регулярно их пересматривать
 
 ---
 
-#### Evristika Dostupnosti
-**Opredelenie**: Pereotsenivaniye informatsii, kotoraya legko prikhodit na um (nedavnie, dramaticheskie sobytiya).
+#### Зеркальное отображение
+**Определение**: Предположение, что противники думают и действуют так же, как мы в их ситуации.
 
-**Primer v CTI**: Posle gromkoy ataki ransomware analitiki mogut chrezymerno atributirovat posleduyushchiye intsidenty tomu zhe aktyoru.
+**Исторический пример**: Пёрл-Харбор (1941). Американские аналитики предполагали, что Япония не атакует, потому что это было бы "иррационально" учитывая военное превосходство США. Они не смогли понять японский стратегический расчёт.
 
-**Snizhenie**: Analiz bazovoy stavki, strukturirovannye chek-listy
-
----
-
-### Strukturirovannye Analiticheskie Tekhniki (SAT)
-
-Razvedyvatelnoe soobshchestvo razrabotalo SAT spetsialno dlya protivodeystviya kognitivnym predraspolozheniyam:
-
-| Tekhnika | Tsel | Kogda Ispolzovat |
-|----------|------|------------------|
-| **Analiz Konkuriruyushchikh Gipotez (ACH)** | Sistematicheski otsenit neskolko obyasneniy protiv dokazatelstv | Atributsiya, slozhnye otsenki |
-| **Proverka Klyuchevykh Predpolozheniy** | Vyyavit i issledovat bazovye predpolozheniya | Lyubaya krupnaya otsenka |
-| **Analiz Krasnoy Komandy** | Dumat kak protivnik | Otsenka ugroz, analiz uyazvimostey |
-| **Advokatiya Dyavola** | Argumetiravat protiv preobladayushchey tochki zreniya | Pered finalizatsiey otsenok |
-| **Indikatory i Preduprezhdeniya (I&W)** | Opredelit nablyudaemye sobytiya, signaliziruyushchiye ob izmenenii | Monitoring, prognozirovanie |
+**Смягчение**: Анализ красной команды, культурная экспертиза
 
 ---
 
-## Urovni Razvedki: Strategicheskaya, Operativnaya, Takticheskaya
+#### Групповое мышление
+**Определение**: Давление конформизма внутри группы подавляет несогласные мнения и альтернативный анализ.
 
-Razvedyvatelnye trebovaniya i produkty znachitelno razlichayutsya v zavisimosti ot gorizonta prinyatiya resheniy potrebitelya.
+**Исторический пример**: Залив Свиней (1961). Планировщики ЦРУ убедили себя, что вторжение удастся; несогласные голоса были подавлены или исключены.
+
+**Смягчение**: Структурированное несогласие (назначение роли "адвоката дьявола"), анонимная обратная связь
+
+---
+
+#### Эвристика доступности
+**Определение**: Переоценка информации, которая легко приходит на ум (недавние, драматичные или лично пережитые события).
+
+**Пример в CTI**: После громкой атаки ransomware аналитики могут чрезмерно атрибутировать последующие инциденты тому же актору, потому что эта угроза на первом месте в сознании.
+
+**Смягчение**: Анализ базовых ставок, структурированные контрольные списки
+
+---
+
+### Структурированные аналитические техники (SAT)
+
+Разведывательное сообщество разработало SAT специально для противодействия когнитивным предрасположенностям:
+
+| Техника | Цель | Когда использовать |
+|---------|------|-------------------|
+| **Анализ конкурирующих гипотез (ACH)** | Систематическая оценка множества объяснений против доказательств | Атрибуция, комплексные оценки |
+| **Проверка ключевых предположений** | Выявление и проверка базовых предположений | Любая крупная оценка |
+| **Анализ красной команды** | Думать как противник | Оценка угроз, анализ уязвимостей |
+| **Адвокат дьявола** | Аргументировать против преобладающего мнения | Перед финализацией оценок |
+| **Индикаторы и предупреждения (I&W)** | Определить наблюдаемые события, которые сигнализировали бы об изменении | Мониторинг, прогнозирование |
+
+**Примечание**: Подробная методология SAT будет рассмотрена в Части 1 этой серии.
+
+---
+
+## Уровни разведки: стратегический, оперативный, тактический
+
+Разведывательные требования и продукты значительно различаются в зависимости от горизонта принятия решений потребителя.
 
 ![Intelligence Levels](/images/intelligence-fundamentals/intelligence-levels.svg)
 
-### Strategicheskaya Razvedka
-- **Auditoriya**: Rukovoditeli, Sovet Direktorov, Politiki
-- **Gorizont**: 12-36 mesyatsev
-- **Fokus**: Trendy landshafta ugroz, pozitsiya riska, investitsionnye prioritety
-- **Primer**: "Aktyory natsionalnykh gosudarstv vse chashche targetiruyut tsepochki postavok v nashem sektore. My rekomenduem diversifikatsiyu kriticheskikh postavshchikov."
+### Стратегическая разведка
+- **Аудитория**: Руководители, Совет директоров, Политики
+- **Горизонт**: 12-36 месяцев
+- **Фокус**: Тренды ландшафта угроз, риск-позиция, инвестиционные приоритеты, геополитические сдвиги
+- **Пример**: "Государственные акторы всё чаще нацеливаются на цепочки поставок в нашем секторе. Мы рекомендуем диверсифицировать критических поставщиков и внедрить дополнительные контроли рисков третьих сторон."
 
-### Operativnaya Razvedka
-- **Auditoriya**: Menedzhery Bezopasnosti, Komandy IR, Komandy Okhoty
-- **Gorizont**: Nedeli do mesyatsev
-- **Fokus**: Analiz kampaniy, profili aktorov ugroz, evolyutsiya TTP
-- **Primer**: "APT41 perešel ot kastamnogo vredonosnogo PO k metodam living-off-the-land v Q4. Komandy okhoty dolzhny prioritiziravat detektsiyu zloupotrebleniya LOLBins."
+### Оперативная разведка
+- **Аудитория**: Менеджеры безопасности, IR-команды, Hunt-команды
+- **Горизонт**: Недели до месяцев
+- **Фокус**: Анализ кампаний, профили акторов угроз, эволюция TTP, паттерны инфраструктуры
+- **Пример**: "APT41 перешёл от кастомного вредоносного ПО к техникам living-off-the-land в Q4. Hunt-команды должны приоритизировать обнаружение злоупотреблений LOLBins."
 
-### Takticheskaya Razvedka
-- **Auditoriya**: Analitiki SOC, Inzhenery Detektsii, Spetsialisty po Reagirovaniyu
-- **Gorizont**: Chasy do dney
-- **Fokus**: IOC, signatury detektsii, konkretnye TTP
-- **Primer**: "Zablokirovat hash `abc123...`, IP `45.33.32.156`, i monitorit sozdanie zaplanirovannyh zadach s pomoshchyu `schtasks.exe /create`."
+### Тактическая разведка
+- **Аудитория**: SOC-аналитики, Инженеры детектирования, Респонденты на инциденты
+- **Горизонт**: Часы до дней
+- **Фокус**: IOC, сигнатуры детектирования, конкретные TTP, немедленные процедуры реагирования
+- **Пример**: "Заблокировать хеш `abc123...`, IP `45.33.32.156`, и мониторить персистентность запланированных задач с использованием `schtasks.exe /create`."
 
-**Kriticheskiy Vyvod**: Organizatsii chasto pereinvestiruyut v takticheskuyu razvedku (fidy IOC), nedoinvestiruya v strategicheskuyu i operativnuyu razvedku. IOC po svoey prirode nedolgovechny — oni predstavlyayut *artefakty* ataki, a ne *povedenie*.
+**Критический инсайт**: Организации часто переинвестируют в тактическую разведку (потоки IOC), недоинвестируя в стратегическую и оперативную разведку. IOC по своей природе скоропортящиеся — они представляют *артефакты* атаки, а не *поведение*. Зрелые разведывательные программы балансируют все три уровня.
 
 ---
 
-## Distsipliny Sbora Razvedki ("INT")
+## Дисциплины сбора разведки ("INT")
 
-Sbor razvedki organizovan v spetsializirovannye distsipliny, kazhdaya s razlichnymi istochnikami, metodami i analitichekimi trebovaniyami.
+Сбор разведки организован в специализированные дисциплины, каждая с уникальными источниками, методами и аналитическими требованиями. Эти дисциплины коллективно называются "INT".
 
 ![Intelligence Disciplines](/images/intelligence-fundamentals/intelligence-disciplines.svg)
 
-### Osnovnye Distsipliny Sbora
+### Основные дисциплины сбора
 
-#### HUMINT (Chelovecheskaya Razvedka)
+#### HUMINT (Человеческая разведка)
 
-**Opredelenie**: Razvedka, poluchennaya ot chelovecheskikh istochnikov cherez mezhlichnostnyy kontakt.
+**Определение**: Разведка, полученная от человеческих источников через межличностный контакт.
 
-**Istochniki**:
-- Informatory i agenty
-- Diplomaticheskaya otchetnost
-- Debrifingi puteshestvennikov
-- Perebezhchiki
-- Doprosy
-- Elitsitatsiya (sotsialnaya inzheneriya v kibersmontekste)
+**Источники**:
+- Информаторы и агенты
+- Дипломатические отчёты
+- Дебрифинги путешественников
+- Перебежчики
+- Допросы
+- Выведывание (социальная инженерия в кибер-контексте)
 
-**Kharakteristiki**:
-- Drevneyshaya razvedyvatelnaya distsiplina
-- Predostavlyaet namereníya i motivatsiyu ("pochemu")
-- Vysokaya tsennost, vysokiy risk
-- Trudno masshtabirovat
+**Характеристики**:
+- Самая древняя разведывательная дисциплина (датируется античностью)
+- Предоставляет намерения и мотивацию ("почему")
+- Высокая ценность, высокий риск
+- Трудно масштабировать
+- Уязвима для обмана и двойных агентов
 
-**Kiberprimenenie**: Vzaimodeystvie s aktorami ugroz na andergrand-forumakh, verbovka istochnikov vnutri prestupnykh organizatsiy, otsenki sotsialnoy inzhenerii.
+**Кибер-применение**: Взаимодействие с акторами угроз на подпольных форумах, вербовка источников внутри преступных организаций, оценки социальной инженерии, программы инсайдерских угроз.
+
+**Проблема оценки источника**: Человеческие источники могут быть перевербованы, обмануты или иметь собственные повестки дня. Подтверждение необходимо.
 
 ---
 
-#### SIGINT (Signalnaya Razvedka)
+#### SIGINT (Сигнальная разведка)
 
-**Opredelenie**: Razvedka, poluchennaya iz perekhvata signalov, vklyuchaya kommunikatsii i elektronnye izlucheniya.
+**Определение**: Разведка, полученная из перехвата сигналов, включая коммуникации и электронные излучения.
 
-**Poddistsipliny**:
+**Поддисциплины**:
 
-| Abbreviatura | Nazvanie | Fokus |
+| Аббревиатура | Название | Фокус |
 |--------------|----------|-------|
-| **COMINT** | Kommunikatsionnaya Razvedka | Golos, tekst, soobshcheniya |
-| **ELINT** | Elektronnaya Razvedka | Nekommunikatsionnye signaly (radar, telemetriya) |
-| **FISINT** | Razvedka Inostrannykh Instrumentalnykh Signalov | Sistemy vooruzheniy, telemetriya kosmicheskikh apparatov |
+| **COMINT** | Коммуникационная разведка | Перехваты голоса, текста, сообщений |
+| **ELINT** | Электронная разведка | Некоммуникационные сигналы (радар, телеметрия) |
+| **FISINT** | Разведка иностранных инструментальных сигналов | Системы вооружений, телеметрия космических аппаратов |
 
-**Kharakteristiki**:
-- Tekhnicheskiy, masshtabiruyemyy sbor
-- Obem sozdaet analiticheskie vyzovy
-- Shifrovanie — znachitelnoye prepyatstvie
+**Характеристики**:
+- Техническая, масштабируемая коллекция
+- Объём создаёт аналитические проблемы
+- Шифрование является значительным препятствием
+- Предоставляет паттерны и содержание коммуникаций
+- Правовые рамки значительно различаются в зависимости от юрисдикции
 
-**Kiberprimenenie**: Analiz setevogo trafika, analiz protokolov C2 vredonosnogo PO, analiz metadannyh zashifrovannogo trafika.
-
----
-
-#### OSINT (Razvedka Otkrytykh Istochnikov)
-
-**Opredelenie**: Razvedka, poluchennaya iz publichno dostupnykh istochnikov.
-
-**Istochniki**:
-- Media (pechat, veshchanie, onlayn)
-- Akademicheskie publikatsii
-- Pravitelstvennye otchety
-- Sotsialnye seti
-- Kommercheskie bazy dannyh
-- Tekhnicheskaya dokumentatsiya
-
-**Kharakteristiki**:
-- Dostupna i ekonomicheski effektivna
-- Obem trebuet sofistisirovannoy filtratsii
-- Problemy verifikatsii (dezinformatsiya)
-- Otsenochno obespechivaet 60-80% razvedyvatelnykh trebovaniy
-
-**Kiberprimenenie**: Issledovanie aktorov ugroz, razvedka uyazvimostey, monitoring utechek uchetnyh dannyh, zashchita brenda, kartografirovanie poverkhnosti ataki.
+**Кибер-применение**: Анализ сетевого трафика, анализ протоколов C2 вредоносного ПО, анализ метаданных зашифрованного трафика, пассивный сбор DNS.
 
 ---
 
-#### GEOINT (Geoprostranstvennaya Razvedka)
+#### OSINT (Разведка из открытых источников)
 
-**Opredelenie**: Razvedka, poluchennaya iz analiza izoobrazheniy i geoprostranstvennoy informatsii.
+**Определение**: Разведка, полученная из публично доступных источников.
 
-**Istochniki**:
-- Sputnikovye snimki
-- Aerofotosyemka
-- Dannye kartografii
-- Sluzhby na osnove mestopolozheniya
-- Metadannye geolokatsii
+**Источники**:
+- СМИ (печать, вещание, онлайн)
+- Академические публикации
+- Правительственные отчёты и документы
+- Социальные сети
+- Коммерческие базы данных
+- Техническая документация
+- Материалы конференций
+- Судебные записи
+- Патентные заявки
 
-**Kiberprimenenie**: Kartografirovanie fizicheskoy infrastruktury, identifikatsiya tsentrov obrabotki dannyh, verifikatsiya tsepochki postavok, podderzhka atributsii.
+**Характеристики**:
+- Доступна и экономически эффективна
+- Объём требует сложной фильтрации
+- Проблемы верификации (дезинформация, ложная информация)
+- По оценкам, обеспечивает 60-80% разведывательных требований
+- Легально для сбора, но этические и правовые соображения остаются
 
----
+**Кибер-применение**: Исследование акторов угроз, разведка уязвимостей, мониторинг утечек учётных данных, защита бренда, картирование поверхности атаки.
 
-#### MASINT (Izmeritelnaya i Signaturnaya Razvedka)
-
-**Opredelenie**: Razvedka, poluchennaya iz analiza dannyh, poluchennykh ot izmiritelnykh priborov dlya identifikatsii otlichitelnykh osobennostey istochnika.
-
-**Oblasti Fokusa**:
-- Radarnye signatury
-- Akusticheskie signatury
-- Yadernoe izluchenie
-- Khimicheskoe/biologicheskoe detektirovaniye
-
-**Kiberprimenenie**: Analiz elektromagnitnykh izlucheniy (TEMPEST), ataki po pobochnym kanalam, otpechatki apparatnogo obespecheniya.
-
----
-
-### Dopolnitelnye Distsipliny
-
-| INT | Polnoye Nazvanie | Fokus |
-|-----|------------------|-------|
-| **FININT** | Finansovaya Razvedka | Denezhnye tranzaktsii, obhod sanktsiy, otmyvanie deneg, otslezhivanie kriptovalyut |
-| **SOCMINT** | Razvedka Sotsialnykh Setey | Analiz sotsialnykh platform, operatsii vliyaniya |
-| **TECHINT** | Tekhnicheskaya Razvedka | Analiz inostrannogo vooruzheniya, revers-inzhiniring vredonosnogo PO |
-| **IMINT** | Razvedka Izoobrazheniy | Podmnozhestvo GEOINT, sfokusirovannoe na analize izoobrazheniy |
-| **MEDINT** | Meditsinskaya Razvedka | Razvedka, svyazannaya so zdorovyem, biologicheskie ugrozy |
+**Правовые/этические соображения**:
+- **Законы о конфиденциальности**: GDPR, CCPA и другие нормативы могут ограничивать сбор и обработку персональных данных
+- **Условия использования**: Скрапинг может нарушать ToS платформ
+- **Долг заботы**: Собранная информация может раскрыть лиц в группе риска
+- **Ответственное раскрытие**: Информация об уязвимостях требует осторожного обращения
 
 ---
 
-## Razvedyvatelnyy Tsikl
+#### GEOINT (Геопространственная разведка)
 
-Razvedyvatelnyy tsikl opisyvaet protsess, posredstvom kotorogo syraya informatsiya preobrazuetsya v gotovuyu razvedku i dostavlyaetsya potrebitelyam.
+**Определение**: Разведка, полученная из анализа изображений и геопространственной информации.
+
+**Источники**:
+- Спутниковые снимки (оптические, радарные, мультиспектральные)
+- Аэрофотосъёмка
+- Картографические данные
+- Сервисы на основе местоположения
+- Метаданные геолокации
+
+**Характеристики**:
+- Предоставляет физический контекст
+- Коммерческая доступность демократизировала доступ
+- Временной анализ выявляет паттерны
+- Интеграция с другими INT повышает ценность
+
+**Кибер-применение**: Картирование физической инфраструктуры, идентификация дата-центров, верификация цепочки поставок, поддержка атрибуции (корреляция физических и кибер-активностей).
+
+---
+
+#### MASINT (Измерительная и сигнатурная разведка)
+
+**Определение**: Разведка, полученная из анализа данных, полученных от измерительных инструментов с целью идентификации отличительных характеристик, связанных с источником, излучателем или отправителем.
+
+**Области фокуса**:
+- Радарные сигнатуры
+- Акустические сигнатуры
+- Ядерное излучение
+- Химическое/биологическое обнаружение
+- Спектральный анализ
+- Анализ материалов
+
+**Характеристики**:
+- Высоко техническая
+- Требует специализированных датчиков
+- Предоставляет уникальные возможности идентификации
+- Часто дополняет другие INT
+
+**Кибер-применение**: Анализ электромагнитных излучений (TEMPEST), атаки по побочным каналам, идентификация оборудования.
+
+---
+
+### Дополнительные дисциплины
+
+| INT | Полное название | Фокус |
+|-----|-----------------|-------|
+| **FININT** | Финансовая разведка | Денежные транзакции, обход санкций, отмывание денег, отслеживание криптовалют |
+| **SOCMINT** | Разведка социальных сетей | Анализ социальных платформ, операции влияния, атрибуция персон |
+| **TECHINT** | Техническая разведка | Анализ иностранного оружия и оборудования, реверс-инжиниринг вредоносного ПО |
+| **IMINT** | Разведка изображений | Подраздел GEOINT, сфокусированный на анализе изображений |
+| **MEDINT** | Медицинская разведка | Разведка, связанная со здоровьем, биологические угрозы, мониторинг пандемий |
+
+**Примечание о "CYBINT"**: Хотя иногда используется разговорно, CYBINT не является формально признанной самостоятельной дисциплиной. Киберразведка обычно представляет собой "всесточный" синтез SIGINT, OSINT, HUMINT и TECHINT, применяемый к кибер-домену.
+
+---
+
+## Разведывательный цикл
+
+Разведывательный цикл описывает процесс, посредством которого сырая информация преобразуется в готовую разведку и доставляется потребителям. Хотя существуют различные модели, шестифазная модель широко принята:
 
 ![Intelligence Cycle](/images/intelligence-fundamentals/intelligence-cycle.svg)
 
-### Faza 1: Trebovaniya (Planirovanie i Rukovodstvo)
+### Фаза 1: Требования (Планирование и руководство)
 
-Razvedka nachinaetsya s voprosa. Trebovaniya opredelyayut:
-- **Prioritetnye Razvedyvatelnye Trebovaniya (PIR)**: Kriticheskie voprosy, na kotorye rukovodstvo nuzhdaetsya v otvetakh
-- **Sushchestvennye Elementy Informatsii (EEI)**: Konkretnye tochki dannyh, neobkhodimye dlya resheniya PIR
-- **Aktsent sbora**: Kakie INT prioritiziravat
-- **Razvedyvatelnye Probely**: Chto my ne znaem, no dolzhny znat
+Разведка начинается с вопроса. Требования определяют:
+- **Приоритетные разведывательные требования (PIR)**: Критические вопросы, на которые руководству нужны ответы
+- **Основные элементы информации (EEI)**: Конкретные точки данных, необходимые для решения PIR
+- **Акцент сбора**: Какие INT приоритизировать
+- **Разведывательные пробелы**: Что мы не знаем, но должны знать
 
-**Primer PIR**: "Kakie aktyory ugroz s naibolshey veroyatnostyu budut targetirovat nashu organizatsiyu v sleduyushchie 12 mesyatsev, i kakie TTP oni ispolzuyut?"
+**Пример PIR**: "Какие акторы угроз наиболее вероятно будут нацеливаться на нашу организацию в ближайшие 12 месяцев, и какие TTP они используют?"
 
-### Faza 2: Sbor
+**Распространённая точка сбоя**: Требования, которые слишком расплывчаты ("расскажите об угрозах") или слишком узки (упущены возникающие угрозы).
 
-Sistematicheskiy sbor syroy informatsii s ispolzovaniem sootvetstvuyushchikh INT. Effektivnyy sbor:
-- Sootvetstvuet opredelennym trebovaniyam
-- Ispolzuet neskolko INT dlya podtverzhdeniya
-- Dokumentiruet istochniki i metody
-- Podderzhivayet tsepichu khraneniya
+### Фаза 2: Сбор
 
-### Faza 3: Obrabotka (Ekspluatatsiya)
+Систематический сбор сырой информации с использованием соответствующих INT. Эффективный сбор:
+- Согласуется с определёнными требованиями
+- Использует множество INT для подтверждения
+- Документирует источники и методы
+- Поддерживает цепочку хранения
+- Выявляет пробелы в сборе
 
-Syroy sobrannyy material preobrazuetsya v ispolzuyemuyu formu:
-- Perevod
-- Deshifrovanie
-- Konversiya formata
-- Normalizatsiya dannyh
-- Deduplikatsiya
-- Nacalnaya validatsiya
-- Otsenka istochnika
+**Управление сбором** включает приоритизацию ограниченных активов сбора против многочисленных требований. Не всё можно собрать — компромиссы необходимы.
 
-### Faza 4: Analiz (Proizvodstvo)
+### Фаза 3: Обработка (Эксплуатация)
 
-Intellektualnoye yadro razvedyvatelnoy raboty. Analiz vklyuchaet:
-- Korrelyatsiyu neskolkikh istochnikov
-- Raspoznavanie patternov
-- Razrabotku i testirovanie gipotez
-- Primenenie Strukturirovannykh Analiticheskikh Tekhnik (SAT)
-- Otsenku nadezhnosti i dostovernosti
-- Naznachenie urovnya doveriya
-- Proizvodstvo gotovykh razvedyvatelnykh produktov
+Сырой собранный материал преобразуется в используемую форму:
+- Перевод
+- Расшифровка
+- Преобразование формата
+- Нормализация данных
+- Дедупликация
+- Первоначальная валидация
+- Оценка источников
 
-### Faza 5: Rasprostraneníye
+### Фаза 4: Анализ (Производство)
 
-Gotovaya razvedka dolzhna dostignut potrebiteley v sootvetstvuyushchikh formatakh:
-- Pismennye otchety
-- Opoveshcheniya i uvedomleniya
-- Mashino-chitaemye fidy (STIX/TAXII)
-- Dashbordy i vizualizatsii
-- Ustnye brifingi
+Интеллектуальное ядро разведывательной работы. Анализ включает:
+- Корреляцию множества источников
+- Распознавание паттернов
+- Разработку и тестирование гипотез
+- Применение структурированных аналитических техник (SAT)
+- Оценку надёжности и достоверности
+- Назначение уровней доверия
+- Производство готовых разведывательных продуктов
 
-**Klyuchevoy Printsip**: Razvedka, kotoraya ne dostigaet pravil'nogo cheloveka v nuzhnoye vremya, bespolezna.
+**Аналитическая строгость**: Профессиональный анализ использует SAT для смягчения когнитивных предрасположенностей и обеспечения защитимых выводов. Оценка без уровня доверия и поддерживающего рассуждения — это мнение, а не разведка.
 
-### Faza 6: Obratnaya Svyaz (Otsenka)
+### Фаза 5: Распространение
 
-Potrebiteli predostavlyayut obratnuyu svyaz o:
-- Relevantnosti dlya ikh potrebnostey
-- Svovremennosti dostavki
-- Deystviennosti rekomendatsiy
-- Tochnosti (so vremenem)
+Готовая разведка должна достичь потребителей в соответствующих форматах и через защищённые каналы:
+- Письменные отчёты (оценки, брифинги)
+- Предупреждения и уведомления
+- Машиночитаемые потоки (STIX/TAXII)
+- Дашборды и визуализации
+- Устные брифинги
 
-Eta obratnaya svyaz utochnyaet budushchiye trebovaniya, zamykaya tsikl.
+**Ключевой принцип**: Разведка, которая не достигает правильного человека в правильное время, бесполезна, независимо от того, насколько она точна.
+
+### Фаза 6: Обратная связь (Оценка)
+
+Потребители предоставляют обратную связь о:
+- Релевантности для их потребностей
+- Своевременности доставки
+- Действенности рекомендаций
+- Точности (с течением времени)
+
+Эта обратная связь уточняет будущие требования, завершая цикл.
 
 ---
 
-## Atributsiya: Spektr Doveriya
+## Атрибуция: спектр доверия
 
-Atributsiya — opredelenie, kto otvetsven za deystviye — yavlyaetsya odnoy iz samykh slozhnykh aspektov razvedyvatelnoy raboty, osobenno v kiberdomene.
+Атрибуция — определение того, кто несёт ответственность за действие — является одним из самых сложных аспектов разведывательной работы, особенно в кибер-домене.
 
-### Pochemu Atributsiya Slozhna
+### Почему атрибуция сложна
 
-| Vyzov | Opisanie |
+| Вызов | Описание |
 |-------|----------|
-| **Lozhnye Flagi** | Protivniki namerenno podkladyvayut dokazatelstva, ukazyvayushchiye na drugikh |
-| **Obshchiy Instrumentariy** | Neskolko aktorov ispolzuyut odni i te zhe semeystva vredonosnogo PO (Cobalt Strike, Mimikatz) |
-| **Proksi-Operatsii** | Podryadchiki, prestupniki po naymu skryvayut istinnykh sponsorov |
-| **Peresechenie Infrastruktury** | Obshchiy khosting, bulletproof-provaydery, skomprometirovannye sistemy |
+| **Ложные флаги** | Противники умышленно подкладывают доказательства, указывающие на других |
+| **Общий инструментарий** | Множество акторов используют одни и те же семейства вредоносного ПО (Cobalt Strike, Mimikatz) |
+| **Прокси-операции** | Подрядчики, наёмные преступники скрывают истинных спонсоров |
+| **Перекрытие инфраструктуры** | Общий хостинг, bulletproof-провайдеры, скомпрометированные системы |
+| **Параллельная разработка** | Похожие TTP могут возникать независимо |
+| **Умышленная путаница** | APT28 vs APT29 имеют перекрывающиеся операции |
 
-### Urovni Doveriya Atributsii
+### Уровни доверия к атрибуции
 
-| Uroven | Opisanie | Osnova |
-|--------|----------|--------|
-| **VYSOKIY** | My otsenivaem s vysokim doveriem... | Neskolko nezavisimykh istochnikov, podtverzhdayushchiye dokazatelstva cherez INT |
-| **UMERENNYY** | My otsenivaem s umerennym doveriem... | Horoshiye dokazatelstva ot menshego chisla istochnikov, nekotorye analiticheskie probely |
-| **NIZKIY** | My otsenivaem s nizkim doveriem... | Ogranichennyye dokazatelstva, znachitelnye probely, pravdopodobno, no nepredelenno |
+| Уровень | Описание | Основа |
+|---------|----------|--------|
+| **ВЫСОКИЙ** | Мы оцениваем с высокой уверенностью... | Множество независимых источников, подтверждающие доказательства через INT, согласованность с известными паттернами |
+| **УМЕРЕННЫЙ** | Мы оцениваем с умеренной уверенностью... | Хорошие доказательства из меньшего количества источников, некоторые аналитические пробелы, общая согласованность |
+| **НИЗКИЙ** | Мы оцениваем с низкой уверенностью... | Ограниченные доказательства, значительные пробелы, возможно, но неопределённо |
 
-**Kriticheskiy Moment**: Dazhe "VYSOKOYE doveriye" — eto ne uverennost. NIE 2002 goda po OMP Iraka otsenivala s "vysokim doveriyem", chto Irak imel programmy OMP — i oshiblas.
+**Критический момент**: Даже "ВЫСОКИЙ доверие" — это не определённость. NIE по ОМУ Ирака 2002 года оценил с "высокой уверенностью", что Ирак имеет программы ОМУ — и ошибся.
+
+### Атрибуция на практике
+
+Атрибуция в реальном мире редко даёт чёткие ответы:
+
+**Пример — Лучшее заявление об атрибуции:**
+> "Мы оцениваем с УМЕРЕННОЙ уверенностью, что APT29 несёт ответственность за это вторжение, на основе: (1) перекрытия инфраструктуры с ранее атрибутированными операциями APT29, (2) согласованности TTP с документированными плейбуками APT29, и (3) согласованности целей со стратегическими интересами России. Однако мы не можем исключить возможность сложной операции под ложным флагом, общего инструментария или участия подрядчиков. Рассмотренные альтернативные гипотезы включают APT28 и криминальных акторов с российской связью."
+
+Это более честно — и более полезно — чем просто сказать "Это сделал APT29."
 
 ---
 
-## Primeneniye k Kiberrazvedke (CTI)
+## Применение к киберразведке (CTI)
 
-Traditsionnaya razvedyvatelnaya struktura napryamuyu otobrazhaetsya na kiberrazvedku:
+Традиционные разведывательные рамки напрямую отображаются на киберразведку:
 
-| Traditsionnaya Kontseptsiya | Primeneniye CTI |
-|----------------------------|-----------------|
-| PIR | "Kakie gruppy ransomware targetiruyut nash sektor?" |
-| HUMINT | Vzaimodeystviye s forumami dark web, programmy vnutrennikh ugroz |
-| SIGINT | Analiz setevogo trafika, issledovanie protokolov C2 |
-| OSINT | Blogi aktorov ugroz, paste-sayty, repozitorii koda |
-| GEOINT | Geolokatsiya infrastruktury, sootvetstviye rezidentnosti dannyh |
-| Otsenka Istochnikov | Otsenka kachestva fidov ugroz, doveriye k indikatoram |
+| Традиционная концепция | Применение в CTI |
+|------------------------|------------------|
+| PIR | "Какие группы ransomware нацеливаются на наш сектор?" |
+| HUMINT | Участие в форумах даркнета, программы инсайдерских угроз |
+| SIGINT | Анализ сетевого трафика, исследование протоколов C2 |
+| OSINT | Блоги акторов угроз, paste-сайты, репозитории кода |
+| GEOINT | Геолокация инфраструктуры, соответствие резиденции данных |
+| Оценка источников | Оценка качества потоков угроз, доверие к индикаторам |
+| Разведывательный цикл | Операции программы CTI |
+| Когнитивные предрасположенности | Обучение аналитиков, структурированный анализ |
 
-### Piramida Boli
+### Пирамида боли
 
-Piramida Boli Devida Bianko (2013) illyustriruet svyaz mezhdu tipami indikatorov i zatratami dlya protivnikov, kogda eti indikatory otkloyyeny:
+Пирамида боли Дэвида Бьянко (2013) иллюстрирует связь между типами индикаторов и стоимостью для противников, когда эти индикаторы запрещены:
 
 ![Pyramid of Pain](/images/intelligence-fundamentals/pyramid-of-pain.svg)
 
-| Uroven | Tip Indikatora | Bol Protivnika | Primechaniya |
-|--------|----------------|----------------|--------------|
-| **Verh** | TTP | TYAZHELO! | Dolzhen izmenit povedenie, remeslo |
-| | Instrumenty | Slozhno | Dolzhen nayti/razrabotat novye instrumenty |
-| | Artefakty Hosta | Razdrazhayushche | Klyuchi reestra, puti faylov, myuteksy |
-| | Setevye Artefakty | Razdrazhayushche | Patterny URI, protokoly C2, JA3 |
-| | Domennye Imena | Prosto | DNS deshevo, no trebuet nastroyki |
-| | IP-Adresa | Legko | Infrastruktura vzaimozamenyaema |
-| **Niz** | Hash-Znacheniya | Trivialno | Rekompilirovat = novyy hash |
+| Уровень | Тип индикатора | Боль противника | Примечания |
+|---------|----------------|-----------------|------------|
+| **Верх** | TTP | ОЧЕНЬ ТРУДНО! | Должен менять поведение, ремесло |
+| | Инструменты | Сложно | Должен найти/разработать новые инструменты |
+| | Артефакты хоста | Раздражает | Ключи реестра, пути файлов, мьютексы |
+| | Сетевые артефакты | Раздражает | Паттерны URI, протоколы C2, JA3 |
+| | Доменные имена | Просто | DNS дёшев, но требует настройки |
+| | IP-адреса | Легко | Инфраструктура взаимозаменяема |
+| **Низ** | Хеш-значения | Тривиально | Перекомпилировать = новый хеш |
 
-**Klyuchevoy Vyvod**: Organizatsii, kotorye fokusiruyut detektsiyu na Taktikah, Tekhnikakh i Protsedurakh (TTP), a ne na atomnykh indikatorakh, sozdayut znachitelno bolshiye zatraty dlya protivnikov. Eto soglasovano s podkhodom MITRE ATT&CK na osnove povedeniya.
+**Ключевой инсайт**: Организации, которые фокусируют обнаружение на Тактиках, Техниках и Процедурах (TTP), а не на атомарных индикаторах, создают значительно более высокие затраты для противников. Это согласуется с поведенческим подходом MITRE ATT&CK.
 
 ---
 
-## Case Study: Ot Dannyh k Razvedke
+## Кейс-стади: от данных к разведке
 
-Proslim, kak syrye dannye stanovyatsya deystvennoy razvedkoy cherez pravilnyy analyticheskiy protsess:
+Давайте проследим, как сырые данные становятся действенной разведкой через правильный аналитический процесс:
 
-### Dannye
+### Данные
 
 ```
 timestamp: 2024-11-15T03:42:17Z
@@ -501,108 +566,122 @@ bytes_out: 2847
 bytes_in: 156892
 ```
 
-### Informatsiya
+### Информация
 
-- **Istochnik**: Rabochaya stantsiya WS-105 (Finansy, polzovatel: john.doe)
-- **Naznachenie**: IP gelokalizovan v Sankt-Peterburge, Rossiya
-- **Provajder**: VPS-provajder s dokumentirovannoy istoriey zloupotreblenij
-- **Vremya**: 03:42 UTC (nerabochiye chasy dlya vostochnogo poberezh'ya SShA)
-- **Pattern trafika**: Malen'kiy zapros, bolshoy otvet (vozmozhnaya eksfiltraciya ili check-in mayaka)
+- **Источник**: Рабочая станция WS-105 (Финансы, пользователь: john.doe)
+- **Назначение**: IP геолоцирован в Санкт-Петербурге, Россия
+- **Провайдер**: VPS-провайдер с документированной историей злоупотреблений
+- **Время**: 03:42 UTC (нерабочие часы для Восточного побережья США)
+- **Паттерн трафика**: Маленький запрос, большой ответ (возможная эксфильтрация или check-in маяка)
 
-### Protsess Analiza
+### Процесс анализа
 
-**Shag 1: Otsenka Istochnika**
-- Setevaya telemetriya: A1 (nashi sobstvennye sensory, syrye dannye)
-- Razvedka ugroz po IP naznacheniya: B2 (avtoritetnyy vendor, ne podtverzhdeno nezavisimo)
-- Otchetnost ISAC: C2 (otchety kolleg, ogranichennaya detalizatsiya)
+**Шаг 1: Оценка источников**
+- Сетевая телеметрия: A1 (наши собственные датчики, сырые данные)
+- Разведка об угрозах по IP назначения: B2 (авторитетный поставщик, не подтверждено независимо)
+- Отчёт ISAC: C2 (отчёты коллег, ограниченные детали)
 
-**Shag 2: Generatsiya Gipotez**
-1. Vredonosnaya kommunikatsiya C2 (APT)
-2. Vredonosnaya kommunikatsiya C2 (kriminal)
-3. Legitimnaya, no neobychnaya biznes-aktivnost
-4. Skomprometirovannoye storonneye prilozheniye
-5. Lozhnopolozhitelnyy rezultat (CDN, oblachnyy servis)
+**Шаг 2: Генерация гипотез**
+1. Вредоносная C2-коммуникация (APT)
+2. Вредоносная C2-коммуникация (криминальная)
+3. Легитимная, но необычная бизнес-активность
+4. Скомпрометированное стороннее приложение
+5. Ложное срабатывание (CDN, облачный сервис)
 
-**Shag 3: Otsenka Dokazatelstv**
+**Шаг 3: Оценка доказательств**
 
-| Dokazatelstvo | H1 (APT) | H2 (Kriminal) | H3 (Legit) | H4 (Storonneye) | H5 (FP) |
-|---------------|----------|---------------|------------|-----------------|---------|
-| Rossiyskiy IP | ++ | + | - | N | N |
-| Nerabochiye chasy | + | + | - | N | N |
-| Pattern trafika | ++ | ++ | N | + | - |
-| Predydushchiy spearfishing | ++ | + | -- | N | -- |
-| Korrelyatsiya ISAC | ++ | N | -- | N | -- |
-| Targeting finansovogo otdela | ++ | + | N | N | N |
+| Доказательство | H1 (APT) | H2 (Крим.) | H3 (Легит.) | H4 (Сторон.) | H5 (Ложн.) |
+|----------------|----------|------------|-------------|--------------|------------|
+| Российский IP | ++ | + | - | N | N |
+| Нерабочие часы | + | + | - | N | N |
+| Паттерн трафика | ++ | ++ | N | + | - |
+| Предшеств. spearphish | ++ | + | -- | N | -- |
+| Корреляция ISAC | ++ | N | -- | N | -- |
+| Цель фин. отдела | ++ | + | N | N | N |
 
-**Shag 4: Otsenka**
+**Шаг 4: Оценка**
 
-Posle primeneniya metodologii ACH:
+После применения методологии ACH:
 
-> My otsenivaem s **UMERENNYM doveriyem**, chto eta aktivnost predstavlyaet kommunikatsiyu komandno-kontrolnogo servera sofistisirovannym aktorom ugroz, veroyatno APT29 ili affilirovannoy sushchnostyu. Eta otsenka osnovana na: korrelyatsii infrastruktury s ranee atributirovannymi operatsiyami (B2), sootvetstvii TTP dokumentirovannym playbukam natsional-gosudarstvennykh aktorov, i soglasovannosti targetinga s tselyami ekonomicheskogo shpionazha.
+> Мы оцениваем с **УМЕРЕННОЙ уверенностью**, что эта активность представляет командно-контрольную коммуникацию продвинутого актора угроз, вероятно APT29 или аффилированная сущность. Эта оценка основана на: корреляции инфраструктуры с ранее атрибутированными операциями (B2), согласованности TTP с документированными плейбуками государственных акторов, согласованности целей с задачами экономического шпионажа, и подтверждающей активности, сообщённой коллегами по отрасли.
 >
-> **Alternativnye gipotezy**: Kriminalnyy aktor (vozmozhen, no menee soglasovan s targetingom), skomprometirovannoye storonneye PO (trebuet dopolnitelnogo rassledovaniya).
+> **Альтернативные гипотезы**: Криминальный актор (возможно, но менее согласуется с целями), скомпрометированное стороннее ПО (требует дополнительного расследования).
+>
+> **Ключевые предположения**: Атрибуция разведки об угрозах IP назначения точна; spearphishing-письмо было начальным вектором.
+>
+> **Разведывательные пробелы**: Образец вредоносного ПО не восстановлен; ограниченная видимость латерального движения.
 
-### Mudrost
+### Мудрость
 
-**Rekomendatsii**:
-1. Initsiirovat protsedury reagirovaniya na intsidenty (VYSOKIY prioritet)
-2. Sokhranit kriminalisticheskie dokazatelstva dlya potentsialnogo vzaimodeystviya s pravoohranitelnymi organami
-3. Privlech yuridicheskogo konsultanta otnositelno posledstviy atributsii natsionalnomu gosudarstvu
-4. Koordinirovat s ISAC sektora
-5. Brifingovat ispolnitelnoye rukovodstvo o potentsialnom vozdeystvii na biznes
-6. Rasshirit detektsiyu dlya svyazannykh TTP po vsey organizatsii
-
----
-
-## Vzglyad Vpered
-
-Eta osnovopolagayushchaya statya ustanavlivaet kontseptualnuyu strukturu dlya razvedyvatelnykh operatsiy. Posleduyushchiye stati v etoy serii predostavyat boleye glubokiye pogruzheniya:
-
-- **Chast 1**: Glubokoe Pogruzhenie v OSINT — Istochniki, Instrumenty, Remeslo i Pravovye Soobrazheniya
-- **Chast 2**: Osnovy SIGINT — Ot RF do Paketa
-- **Chast 3**: HUMINT v Kiberoperatsiyakh — Sotsialnaya Inzheneriya i Dalye
-- **Chast 4**: GEOINT dlya Kibera — Fiziko-Tsifrovaya Konvergentsiya
-- **Chast 5**: Strukturirovannyy Analiz — ACH, Red Teaming i Snizhenie Kognitivnykh Predraspolozheniy
+**Рекомендации**:
+1. Инициировать процедуры реагирования на инциденты (ВЫСОКИЙ приоритет)
+2. Сохранить криминалистические доказательства для потенциального привлечения правоохранительных органов
+3. Привлечь юридического консультанта относительно последствий атрибуции государственного актора
+4. Координировать с отраслевым ISAC (поделиться индикаторами, запросить дополнительный контекст)
+5. Проинформировать руководство о потенциальном влиянии на бизнес
+6. Расширить обнаружение связанных TTP по всему предприятию
+7. Проверить сторонние приложения с доступом к финансам
 
 ---
 
-## Glossariy
+## Взгляд вперёд
 
-| Termin | Opredelenie |
+Эта фундаментальная статья устанавливает концептуальную рамку для разведывательных операций. Последующие статьи в этой серии предоставят более глубокое погружение:
+
+- **Часть 1**: Глубокое погружение в OSINT — Источники, инструменты, ремесло и правовые соображения
+- **Часть 2**: Основы SIGINT — От РЧ до пакета
+- **Часть 3**: HUMINT в кибероператорациях — Социальная инженерия и далее
+- **Часть 4**: GEOINT для кибер — Физико-цифровая конвергенция
+- **Часть 5**: Структурированный анализ — ACH, красная команда и смягчение когнитивных предрасположенностей
+
+---
+
+## Глоссарий
+
+| Термин | Определение |
 |--------|-------------|
-| **ACH** | Analiz Konkuriruyushchikh Gipotez — strukturirovannaya tekhnika dlya otsenki neskolkikh obyasneniy |
-| **COMINT** | Kommunikatsionnaya Razvedka — podmnozhestvo SIGINT |
-| **CTI** | Kiberrazvedka Ugroz |
-| **EEI** | Sushchestvennye Elementy Informatsii |
-| **ELINT** | Elektronnaya Razvedka — podmnozhestvo SIGINT |
-| **FININT** | Finansovaya Razvedka |
-| **GEOINT** | Geoprostranstvennaya Razvedka |
-| **HUMINT** | Chelovecheskaya Razvedka |
-| **I&W** | Indikatory i Preduprezhdeniya |
-| **IOC** | Indikator Kompromtatsii |
-| **ISAC** | Tsentr Obmena i Analiza Informatsii |
-| **MASINT** | Izmeritelnaya i Signaturnaya Razvedka |
-| **OSINT** | Razvedka Otkrytykh Istochnikov |
-| **PIR** | Prioritetnoye Razvedyvatelnoye Trebovaniye |
-| **SAT** | Strukturirovannaya Analiticheskaya Tekhnika |
-| **SIGINT** | Signalnaya Razvedka |
-| **TTP** | Taktiki, Tekhniki i Protsedury |
+| **ACH** | Анализ конкурирующих гипотез - структурированная техника для оценки множества объяснений |
+| **COMINT** | Коммуникационная разведка - подраздел SIGINT |
+| **CTI** | Киберразведка об угрозах |
+| **EEI** | Основные элементы информации |
+| **ELINT** | Электронная разведка - подраздел SIGINT |
+| **FININT** | Финансовая разведка |
+| **GEOINT** | Геопространственная разведка |
+| **HUMINT** | Человеческая разведка |
+| **I&W** | Индикаторы и предупреждения |
+| **IMINT** | Разведка изображений |
+| **INT** | Разведывательная дисциплина |
+| **IOC** | Индикатор компрометации |
+| **ISAC** | Центр обмена и анализа информации |
+| **MASINT** | Измерительная и сигнатурная разведка |
+| **OSINT** | Разведка из открытых источников |
+| **PIR** | Приоритетное разведывательное требование |
+| **SAT** | Структурированная аналитическая техника |
+| **SIGINT** | Сигнальная разведка |
+| **SOCMINT** | Разведка социальных сетей |
+| **TECHINT** | Техническая разведка |
+| **TTP** | Тактики, техники и процедуры |
 
 ---
 
-## Ssylki i Dopolnitelnoye Chteniye
+## Ссылки и дополнительное чтение
 
-### Ofitsialnyye Publikatsii
+### Официальные публикации
 - Joint Publication 2-0: Joint Intelligence (US DoD)
 - Intelligence Community Directive 203: Analytic Standards
+- Intelligence Community Directive 206: Sourcing Requirements
 - NIST SP 800-150: Guide to Cyber Threat Information Sharing
 
-### Fundamentalnyye Teksty
-- Heuer, R. (1999). *Psychology of Intelligence Analysis*
-- Lowenthal, M. (2019). *Intelligence: From Secrets to Policy*
-- Clark, R. (2019). *Intelligence Analysis: A Target-Centric Approach*
+### Фундаментальные тексты
+- Heuer, R. (1999). *Psychology of Intelligence Analysis* — Обязательное чтение о когнитивных предрасположенностях
+- Lowenthal, M. (2019). *Intelligence: From Secrets to Policy* — Комплексный обзор
+- Clark, R. (2019). *Intelligence Analysis: A Target-Centric Approach* — Современные аналитические методы
 
-### Resursy CTI
+### Исторические кейс-стади
+- Wohlstetter, R. (1962). *Pearl Harbor: Warning and Decision* — Классическое исследование разведывательной неудачи
+- Jervis, R. (2010). *Why Intelligence Fails* — Анализ неудачи оценки ОМУ Ирака
+
+### CTI-специфические ресурсы
 - MITRE ATT&CK Framework: https://attack.mitre.org
 - Bianco, D. (2013). *The Pyramid of Pain*: https://detect-respond.blogspot.com/2013/03/the-pyramid-of-pain.html
 - STIX/TAXII Standards: https://oasis-open.github.io/cti-documentation/
@@ -610,4 +689,12 @@ Eta osnovopolagayushchaya statya ustanavlivaet kontseptualnuyu strukturu dlya ra
 
 ---
 
-*Eta statya yavlyaetsya chastyu serii Osnovy Razvedki. Seriya napravlena na preodoleniye razryva mezhdu traditsionnym razvedyvatelnym remeslom i sovremennymi operatsiyami kiberrazvedki.*
+*Эта статья является частью серии "Основы разведки". Серия направлена на преодоление разрыва между традиционным разведывательным ремеслом и современными операциями киберразведки об угрозах.*
+
+*Вопросы, исправления или отзывы? Откройте issue на GitHub или свяжитесь через страницу контактов.*
+
+---
+
+**Журнал изменений:**
+- v1.1: Добавлен раздел оценки источников, раздел когнитивных предрасположенностей, уровни доверия к атрибуции, расширены правовые/этические соображения, исправлена структура пирамиды боли, добавлен глоссарий
+- v1.0: Первоначальный выпуск

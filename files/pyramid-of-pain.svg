@@ -1,0 +1,166 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 700">
+  <defs>
+    <linearGradient id="trivialGrad" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" style="stop-color:#1a472a"/>
+      <stop offset="100%" style="stop-color:#0d2818"/>
+    </linearGradient>
+    <linearGradient id="easyGrad" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" style="stop-color:#2d5a3d"/>
+      <stop offset="100%" style="stop-color:#1a472a"/>
+    </linearGradient>
+    <linearGradient id="simpleGrad" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" style="stop-color:#4a6b2f"/>
+      <stop offset="100%" style="stop-color:#3d5a27"/>
+    </linearGradient>
+    <linearGradient id="annoyingGrad1" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" style="stop-color:#7a6b45"/>
+      <stop offset="100%" style="stop-color:#5a5035"/>
+    </linearGradient>
+    <linearGradient id="annoyingGrad2" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" style="stop-color:#8b7355"/>
+      <stop offset="100%" style="stop-color:#6b5a45"/>
+    </linearGradient>
+    <linearGradient id="challengingGrad" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" style="stop-color:#b85c38"/>
+      <stop offset="100%" style="stop-color:#8b4513"/>
+    </linearGradient>
+    <linearGradient id="toughGrad" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" style="stop-color:#ff6b00"/>
+      <stop offset="100%" style="stop-color:#cc3300"/>
+    </linearGradient>
+    <filter id="glow">
+      <feGaussianBlur stdDeviation="3" result="coloredBlur"/>
+      <feMerge>
+        <feMergeNode in="coloredBlur"/>
+        <feMergeNode in="SourceGraphic"/>
+      </feMerge>
+    </filter>
+  </defs>
+  
+  <!-- Background -->
+  <rect width="900" height="700" fill="#0a0a0a"/>
+  
+  <!-- Grid -->
+  <g stroke="#141414" stroke-width="1" opacity="0.4">
+    <line x1="0" y1="100" x2="900" y2="100"/>
+    <line x1="0" y1="200" x2="900" y2="200"/>
+    <line x1="0" y1="300" x2="900" y2="300"/>
+    <line x1="0" y1="400" x2="900" y2="400"/>
+    <line x1="0" y1="500" x2="900" y2="500"/>
+    <line x1="0" y1="600" x2="900" y2="600"/>
+  </g>
+  
+  <!-- Title -->
+  <text x="450" y="40" text-anchor="middle" fill="#e5e5e5" font-family="monospace" font-size="24" font-weight="bold">PYRAMID OF PAIN</text>
+  <text x="450" y="65" text-anchor="middle" fill="#666" font-family="monospace" font-size="12">David J. Bianco (2013) - Indicator Effectiveness Framework</text>
+  
+  <!-- Pain scale on left -->
+  <g transform="translate(30, 130)">
+    <rect x="0" y="0" width="70" height="470" rx="5" fill="#141414" stroke="#333" stroke-width="1"/>
+    <text x="35" y="22" text-anchor="middle" fill="#ff6b00" font-family="monospace" font-size="9" font-weight="bold">ADVERSARY</text>
+    <text x="35" y="35" text-anchor="middle" fill="#ff6b00" font-family="monospace" font-size="9" font-weight="bold">PAIN</text>
+    
+    <!-- Pain gradient bar -->
+    <defs>
+      <linearGradient id="painScale" x1="0%" y1="100%" x2="0%" y2="0%">
+        <stop offset="0%" style="stop-color:#1a472a"/>
+        <stop offset="50%" style="stop-color:#8b7355"/>
+        <stop offset="100%" style="stop-color:#ff6b00"/>
+      </linearGradient>
+    </defs>
+    <rect x="25" y="50" width="20" height="390" fill="url(#painScale)" rx="3"/>
+    
+    <text x="35" y="455" text-anchor="middle" fill="#1a472a" font-family="monospace" font-size="8">LOW</text>
+    <text x="35" y="65" text-anchor="middle" fill="#ff6b00" font-family="monospace" font-size="8">HIGH</text>
+  </g>
+  
+  <!-- Pyramid Layers - shifted left to make room for examples -->
+  
+  <!-- Layer 1: Hash Values (TRIVIAL) - Bottom -->
+  <g transform="translate(380, 595)">
+    <polygon points="0,0 -250,0 -215,-50 215,-50 250,0" fill="url(#trivialGrad)" stroke="#2d5a3d" stroke-width="2"/>
+    <text x="0" y="-22" text-anchor="middle" fill="#e5e5e5" font-family="monospace" font-size="14" font-weight="bold">HASH VALUES</text>
+  </g>
+  
+  <!-- Layer 2: IP Addresses (EASY) -->
+  <g transform="translate(380, 545)">
+    <polygon points="0,0 -215,0 -185,-45 185,-45 215,0" fill="url(#easyGrad)" stroke="#4a6b2f" stroke-width="2"/>
+    <text x="0" y="-18" text-anchor="middle" fill="#e5e5e5" font-family="monospace" font-size="13" font-weight="bold">IP ADDRESSES</text>
+  </g>
+  
+  <!-- Layer 3: Domain Names (SIMPLE) -->
+  <g transform="translate(380, 500)">
+    <polygon points="0,0 -185,0 -155,-42 155,-42 185,0" fill="url(#simpleGrad)" stroke="#6b8b3d" stroke-width="2"/>
+    <text x="0" y="-16" text-anchor="middle" fill="#e5e5e5" font-family="monospace" font-size="12" font-weight="bold">DOMAIN NAMES</text>
+  </g>
+  
+  <!-- Layer 4: Network Artifacts (ANNOYING) -->
+  <g transform="translate(380, 458)">
+    <polygon points="0,0 -155,0 -125,-40 125,-40 155,0" fill="url(#annoyingGrad1)" stroke="#8a7a55" stroke-width="2"/>
+    <text x="0" y="-16" text-anchor="middle" fill="#e5e5e5" font-family="monospace" font-size="11" font-weight="bold">NETWORK ARTIFACTS</text>
+  </g>
+  
+  <!-- Layer 5: Host Artifacts (ANNOYING) -->
+  <g transform="translate(380, 418)">
+    <polygon points="0,0 -125,0 -100,-38 100,-38 125,0" fill="url(#annoyingGrad2)" stroke="#a08060" stroke-width="2"/>
+    <text x="0" y="-14" text-anchor="middle" fill="#e5e5e5" font-family="monospace" font-size="11" font-weight="bold">HOST ARTIFACTS</text>
+  </g>
+  
+  <!-- Layer 6: Tools (CHALLENGING) -->
+  <g transform="translate(380, 380)">
+    <polygon points="0,0 -100,0 -70,-36 70,-36 100,0" fill="url(#challengingGrad)" stroke="#cc6b4a" stroke-width="2"/>
+    <text x="0" y="-14" text-anchor="middle" fill="#e5e5e5" font-family="monospace" font-size="12" font-weight="bold">TOOLS</text>
+  </g>
+  
+  <!-- Layer 7: TTPs (TOUGH!) - Top with glow -->
+  <g transform="translate(380, 344)">
+    <polygon points="0,0 -70,0 -35,-60 35,-60 70,0" fill="url(#toughGrad)" stroke="#ff8c40" stroke-width="3" filter="url(#glow)"/>
+    <text x="0" y="-35" text-anchor="middle" fill="#0a0a0a" font-family="monospace" font-size="12" font-weight="bold">TTPs</text>
+    <text x="0" y="-20" text-anchor="middle" fill="#1a1a1a" font-family="monospace" font-size="7">Tactics, Techniques</text>
+    <text x="0" y="-10" text-anchor="middle" fill="#1a1a1a" font-family="monospace" font-size="7">&amp; Procedures</text>
+  </g>
+  
+  <!-- Right side - Pain level labels and examples -->
+  <g font-family="monospace">
+    <!-- Labels -->
+    <text x="650" y="310" fill="#ff6b00" font-size="10" font-weight="bold">(TOUGH!)</text>
+    <text x="650" y="370" fill="#cc6b4a" font-size="9">(CHALLENGING)</text>
+    <text x="650" y="410" fill="#a08060" font-size="9">(ANNOYING)</text>
+    <text x="650" y="450" fill="#8a7a55" font-size="9">(ANNOYING)</text>
+    <text x="650" y="492" fill="#6b8b3d" font-size="9">(SIMPLE)</text>
+    <text x="650" y="535" fill="#4a6b2f" font-size="9">(EASY)</text>
+    <text x="650" y="585" fill="#2d5a3d" font-size="9">(TRIVIAL)</text>
+    
+    <!-- Examples -->
+    <text x="750" y="310" fill="#666" font-size="9">MITRE ATT&amp;CK</text>
+    <text x="750" y="370" fill="#666" font-size="9">Cobalt Strike, Mimikatz</text>
+    <text x="750" y="410" fill="#666" font-size="9">Registry keys, file paths</text>
+    <text x="750" y="450" fill="#666" font-size="9">URI patterns, C2 protocols</text>
+    <text x="750" y="492" fill="#666" font-size="9">Malicious domains, DGA</text>
+    <text x="750" y="535" fill="#666" font-size="9">C2 server addresses</text>
+    <text x="750" y="585" fill="#666" font-size="9">SHA1, MD5, SHA256</text>
+  </g>
+  
+  <!-- Attacker cost annotation -->
+  <g transform="translate(115, 380)">
+    <line x1="0" y1="200" x2="0" y2="0" stroke="#ff6b00" stroke-width="2" marker-end="url(#arrowUp)"/>
+    <text x="15" y="110" fill="#666" font-family="monospace" font-size="9" transform="rotate(-90 15 110)">COST TO ADVERSARY</text>
+  </g>
+  
+  <defs>
+    <marker id="arrowUp" markerWidth="10" markerHeight="7" refX="5" refY="7" orient="auto">
+      <polygon points="0 7, 5 0, 10 7" fill="#ff6b00"/>
+    </marker>
+  </defs>
+  
+  <!-- Key insight box -->
+  <g transform="translate(450, 640)">
+    <rect x="-350" y="0" width="700" height="45" rx="5" fill="#1a1a1a" stroke="#ff6b00" stroke-width="1"/>
+    <text x="0" y="15" text-anchor="middle" fill="#ff6b00" font-family="monospace" font-size="10" font-weight="bold">KEY INSIGHT</text>
+    <text x="0" y="30" text-anchor="middle" fill="#888" font-family="monospace" font-size="9">Focus detection on behaviors (TTPs) rather than atomic indicators.</text>
+    <text x="0" y="42" text-anchor="middle" fill="#666" font-family="monospace" font-size="8">IOCs at the bottom are trivial to change. TTPs require adversaries to retool entirely.</text>
+  </g>
+  
+  <!-- Footer -->
+  <text x="450" y="695" text-anchor="middle" fill="#333" font-family="monospace" font-size="10">burnedsignal.com | Intelligence Fundamentals</text>
+</svg>
