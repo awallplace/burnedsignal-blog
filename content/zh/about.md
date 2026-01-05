@@ -27,8 +27,9 @@ burnedsignal 是一个致力于揭露那些应该保持隐藏的内容的网络�
 ### 联系方式
 
 如果有提示、咨询或合作：
-- Email: contact [at] burnedsignal.io
-- PGP: 应要求提供
+- Telegram: [@intraair](https://t.me/intraair)
+- LinkedIn: [Bilal Teke](https://www.linkedin.com/in/bilal-teke/)
+- Twitter/X: [@intraair](https://x.com/intraair)
 
 ---
 

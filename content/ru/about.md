@@ -14,4 +14,7 @@ burnedsignal - это блог, посвящённый кибербезопас�
 
 ### Контакт
 
-Свяжитесь с нами через GitHub.
+Для вопросов, советов или сотрудничества:
+- Telegram: [@intraair](https://t.me/intraair)
+- LinkedIn: [Bilal Teke](https://www.linkedin.com/in/bilal-teke/)
+- Twitter/X: [@intraair](https://x.com/intraair)

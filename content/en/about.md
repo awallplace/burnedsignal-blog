@@ -27,8 +27,9 @@ In an era where digital threats evolve faster than defenses, we aim to:
 ### Contact
 
 For tips, inquiries, or collaboration:
-- Email: contact [at] burnedsignal.io
-- PGP: Available upon request
+- Telegram: [@intraair](https://t.me/intraair)
+- LinkedIn: [Bilal Teke](https://www.linkedin.com/in/bilal-teke/)
+- Twitter/X: [@intraair](https://x.com/intraair)
 
 ---
 
