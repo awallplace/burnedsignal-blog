@@ -58,53 +58,28 @@ enableEmoji = false
         url = "/archive/"
         weight = 4
 
-  [languages.tr]
-    languageName = "Turkce"
-    languageCode = "tr"
-    contentDir = "content/tr"
+  [languages.ru]
+    languageName = "Russkiy"
+    languageCode = "ru"
+    contentDir = "content/ru"
     weight = 2
-    [languages.tr.params]
-      description = "Siber Guvenlik & Istihbarat Blogu"
-    [languages.tr.menus]
-      [[languages.tr.menus.main]]
-        name = "Ana Sayfa"
+    [languages.ru.params]
+      description = "Blog o Kiberbezopasnosti i Razvedke"
+    [languages.ru.menus]
+      [[languages.ru.menus.main]]
+        name = "Glavnaya"
         url = "/"
         weight = 1
-      [[languages.tr.menus.main]]
-        name = "Yazilar"
+      [[languages.ru.menus.main]]
+        name = "Stati"
         url = "/posts/"
         weight = 2
-      [[languages.tr.menus.main]]
-        name = "Hakkinda"
+      [[languages.ru.menus.main]]
+        name = "O Nas"
         url = "/about/"
         weight = 3
-      [[languages.tr.menus.main]]
-        name = "Arsiv"
-        url = "/archive/"
-        weight = 4
-
-  [languages.es]
-    languageName = "Espanol"
-    languageCode = "es"
-    contentDir = "content/es"
-    weight = 3
-    [languages.es.params]
-      description = "Blog de Ciberseguridad e Inteligencia"
-    [languages.es.menus]
-      [[languages.es.menus.main]]
-        name = "Inicio"
-        url = "/"
-        weight = 1
-      [[languages.es.menus.main]]
-        name = "Articulos"
-        url = "/posts/"
-        weight = 2
-      [[languages.es.menus.main]]
-        name = "Acerca de"
-        url = "/about/"
-        weight = 3
-      [[languages.es.menus.main]]
-        name = "Archivo"
+      [[languages.ru.menus.main]]
+        name = "Arkhiv"
         url = "/archive/"
         weight = 4
 

@@ -6,8 +6,7 @@
     </h1>
     <p class="hero-tagline">{{ site.Params.tagline }}</p>
     <p class="hero-description">
-      {{ if eq .Lang "tr" }}Siber guvenlik, istihbarat ve dijital gizlilik uzerine derinlemesine analizler.
-      {{ else if eq .Lang "es" }}Analisis profundos sobre ciberseguridad, inteligencia y privacidad digital.
+      {{ if eq .Lang "ru" }}Glubokiy analiz kiberbezopasnosti, razvedki i tsifrovoy konfidentsialnosti.
       {{ else if eq .Lang "zh" }}Guan Yu Wang Luo An Quan, Qing Bao He Shu Zi Yin Si De Shen Du Fen Xi.
       {{ else }}Deep dives into cybersecurity, intelligence, and digital privacy.{{ end }}
     </p>
@@ -35,14 +34,12 @@
 <section class="recent-posts">
   <header class="section-header">
     <h2 class="section-title">
-      {{ if eq .Lang "tr" }}Son Yazilar
-      {{ else if eq .Lang "es" }}Articulos Recientes
+      {{ if eq .Lang "ru" }}Poslednie Stati
       {{ else if eq .Lang "zh" }}Zui Xin Wen Zhang
       {{ else }}Recent Posts{{ end }}
     </h2>
     <a href="{{ "posts/" | relLangURL }}" class="view-all">
-      {{ if eq .Lang "tr" }}Tumu
-      {{ else if eq .Lang "es" }}Ver todos
+      {{ if eq .Lang "ru" }}Smotret Vse
       {{ else if eq .Lang "zh" }}Cha Kan Quan Bu
       {{ else }}View all{{ end }}
       <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
@@ -75,8 +72,7 @@
     </article>
     {{ else }}
     <p class="no-posts">
-      {{ if eq .Lang "tr" }}Henuz yazi yok.
-      {{ else if eq .Lang "es" }}No hay articulos aun.
+      {{ if eq .Lang "ru" }}Statey poka net.
       {{ else if eq .Lang "zh" }}Zan Wu Wen Zhang.
       {{ else }}No posts yet.{{ end }}
     </p>
@@ -89,8 +85,7 @@
 <section class="tags-section">
   <header class="section-header">
     <h2 class="section-title">
-      {{ if eq .Lang "tr" }}Etiketler
-      {{ else if eq .Lang "es" }}Etiquetas
+      {{ if eq .Lang "ru" }}Tegi
       {{ else if eq .Lang "zh" }}Biao Qian
       {{ else }}Tags{{ end }}
     </h2>
