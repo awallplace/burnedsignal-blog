@@ -52,7 +52,7 @@
   </header>
 
   <div class="posts-grid">
-    {{ range first 6 (where site.AllPages "Section" "posts") }}
+    {{ range first 6 (where .Site.RegularPages "Section" "posts") }}
     <article class="post-card">
       <a href="{{ .Permalink }}" class="post-card-link">
         <h3 class="post-card-title">{{ .Title }}</h3>
