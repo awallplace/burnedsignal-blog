@@ -1,0 +1,160 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 600">
+  <defs>
+    <linearGradient id="headerGrad" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" style="stop-color:#ff6b00"/>
+      <stop offset="100%" style="stop-color:#cc5500"/>
+    </linearGradient>
+  </defs>
+  
+  <!-- Background -->
+  <rect width="900" height="600" fill="#0a0a0a"/>
+  
+  <!-- Grid -->
+  <g stroke="#141414" stroke-width="1" opacity="0.3">
+    <line x1="0" y1="100" x2="900" y2="100"/>
+    <line x1="0" y1="200" x2="900" y2="200"/>
+    <line x1="0" y1="300" x2="900" y2="300"/>
+    <line x1="0" y1="400" x2="900" y2="400"/>
+    <line x1="0" y1="500" x2="900" y2="500"/>
+  </g>
+  
+  <!-- Title -->
+  <text x="450" y="35" text-anchor="middle" fill="#e5e5e5" font-family="monospace" font-size="24" font-weight="bold">SOURCE EVALUATION MATRIX</text>
+  <text x="450" y="58" text-anchor="middle" fill="#666" font-family="monospace" font-size="12">The Admiralty/NATO System (6x6)</text>
+  
+  <!-- SOURCE RELIABILITY Section (Left) -->
+  <g transform="translate(50, 90)">
+    <rect x="0" y="0" width="380" height="280" rx="8" fill="#141414" stroke="#ff6b00" stroke-width="2"/>
+    
+    <!-- Header -->
+    <rect x="0" y="0" width="380" height="35" rx="8" fill="url(#headerGrad)"/>
+    <rect x="0" y="20" width="380" height="15" fill="url(#headerGrad)"/>
+    <text x="190" y="24" text-anchor="middle" fill="#0a0a0a" font-family="monospace" font-size="14" font-weight="bold">SOURCE RELIABILITY (A-F)</text>
+    
+    <!-- Rows -->
+    <g font-family="monospace" font-size="11">
+      <!-- A -->
+      <rect x="10" y="45" width="360" height="35" rx="4" fill="#1a3d1a" stroke="#2d5a2d" stroke-width="1"/>
+      <text x="30" y="67" fill="#4ade80" font-weight="bold" font-size="16">A</text>
+      <text x="60" y="62" fill="#e5e5e5" font-weight="bold">Completely Reliable</text>
+      <text x="60" y="75" fill="#888" font-size="9">No doubt. History of complete reliability.</text>
+      
+      <!-- B -->
+      <rect x="10" y="85" width="360" height="35" rx="4" fill="#1a3320" stroke="#2d5a35" stroke-width="1"/>
+      <text x="30" y="107" fill="#86efac" font-weight="bold" font-size="16">B</text>
+      <text x="60" y="102" fill="#e5e5e5" font-weight="bold">Usually Reliable</text>
+      <text x="60" y="115" fill="#888" font-size="9">Minor doubts. Mostly valid history.</text>
+      
+      <!-- C -->
+      <rect x="10" y="125" width="360" height="35" rx="4" fill="#2d2d1a" stroke="#4a4a2d" stroke-width="1"/>
+      <text x="30" y="147" fill="#fde047" font-weight="bold" font-size="16">C</text>
+      <text x="60" y="142" fill="#e5e5e5" font-weight="bold">Fairly Reliable</text>
+      <text x="60" y="155" fill="#888" font-size="9">Doubts exist. Some valid past info.</text>
+      
+      <!-- D -->
+      <rect x="10" y="165" width="360" height="35" rx="4" fill="#3d2d1a" stroke="#5a4a2d" stroke-width="1"/>
+      <text x="30" y="187" fill="#fbbf24" font-weight="bold" font-size="16">D</text>
+      <text x="60" y="182" fill="#e5e5e5" font-weight="bold">Not Usually Reliable</text>
+      <text x="60" y="195" fill="#888" font-size="9">Significant doubts. Mixed history.</text>
+      
+      <!-- E -->
+      <rect x="10" y="205" width="360" height="35" rx="4" fill="#3d1a1a" stroke="#5a2d2d" stroke-width="1"/>
+      <text x="30" y="227" fill="#f87171" font-weight="bold" font-size="16">E</text>
+      <text x="60" y="222" fill="#e5e5e5" font-weight="bold">Unreliable</text>
+      <text x="60" y="235" fill="#888" font-size="9">Lacking authenticity/trustworthiness.</text>
+      
+      <!-- F -->
+      <rect x="10" y="245" width="360" height="30" rx="4" fill="#2d2d2d" stroke="#4a4a4a" stroke-width="1"/>
+      <text x="30" y="265" fill="#9ca3af" font-weight="bold" font-size="16">F</text>
+      <text x="60" y="262" fill="#e5e5e5" font-weight="bold">Cannot Be Judged</text>
+      <text x="200" y="262" fill="#888" font-size="9">New/unknown source</text>
+    </g>
+  </g>
+  
+  <!-- INFORMATION CREDIBILITY Section (Right) -->
+  <g transform="translate(470, 90)">
+    <rect x="0" y="0" width="380" height="280" rx="8" fill="#141414" stroke="#3498db" stroke-width="2"/>
+    
+    <!-- Header -->
+    <rect x="0" y="0" width="380" height="35" rx="8" fill="#3498db"/>
+    <rect x="0" y="20" width="380" height="15" fill="#3498db"/>
+    <text x="190" y="24" text-anchor="middle" fill="#0a0a0a" font-family="monospace" font-size="14" font-weight="bold">INFORMATION CREDIBILITY (1-6)</text>
+    
+    <!-- Rows -->
+    <g font-family="monospace" font-size="11">
+      <!-- 1 -->
+      <rect x="10" y="45" width="360" height="35" rx="4" fill="#1a3d1a" stroke="#2d5a2d" stroke-width="1"/>
+      <text x="30" y="67" fill="#4ade80" font-weight="bold" font-size="16">1</text>
+      <text x="60" y="62" fill="#e5e5e5" font-weight="bold">Confirmed</text>
+      <text x="60" y="75" fill="#888" font-size="9">Confirmed by independent sources. Logical.</text>
+      
+      <!-- 2 -->
+      <rect x="10" y="85" width="360" height="35" rx="4" fill="#1a3320" stroke="#2d5a35" stroke-width="1"/>
+      <text x="30" y="107" fill="#86efac" font-weight="bold" font-size="16">2</text>
+      <text x="60" y="102" fill="#e5e5e5" font-weight="bold">Probably True</text>
+      <text x="60" y="115" fill="#888" font-size="9">Not confirmed but logical and consistent.</text>
+      
+      <!-- 3 -->
+      <rect x="10" y="125" width="360" height="35" rx="4" fill="#2d2d1a" stroke="#4a4a2d" stroke-width="1"/>
+      <text x="30" y="147" fill="#fde047" font-weight="bold" font-size="16">3</text>
+      <text x="60" y="142" fill="#e5e5e5" font-weight="bold">Possibly True</text>
+      <text x="60" y="155" fill="#888" font-size="9">Not confirmed. Reasonably logical.</text>
+      
+      <!-- 4 -->
+      <rect x="10" y="165" width="360" height="35" rx="4" fill="#3d2d1a" stroke="#5a4a2d" stroke-width="1"/>
+      <text x="30" y="187" fill="#fbbf24" font-weight="bold" font-size="16">4</text>
+      <text x="60" y="182" fill="#e5e5e5" font-weight="bold">Doubtfully True</text>
+      <text x="60" y="195" fill="#888" font-size="9">Possible but not logical. No support.</text>
+      
+      <!-- 5 -->
+      <rect x="10" y="205" width="360" height="35" rx="4" fill="#3d1a1a" stroke="#5a2d2d" stroke-width="1"/>
+      <text x="30" y="227" fill="#f87171" font-weight="bold" font-size="16">5</text>
+      <text x="60" y="222" fill="#e5e5e5" font-weight="bold">Improbable</text>
+      <text x="60" y="235" fill="#888" font-size="9">Not logical. Contradicted by other info.</text>
+      
+      <!-- 6 -->
+      <rect x="10" y="245" width="360" height="30" rx="4" fill="#2d2d2d" stroke="#4a4a4a" stroke-width="1"/>
+      <text x="30" y="265" fill="#9ca3af" font-weight="bold" font-size="16">6</text>
+      <text x="60" y="262" fill="#e5e5e5" font-weight="bold">Cannot Be Judged</text>
+      <text x="200" y="262" fill="#888" font-size="9">No basis to evaluate</text>
+    </g>
+  </g>
+  
+  <!-- Example Box -->
+  <g transform="translate(50, 390)">
+    <rect x="0" y="0" width="800" height="120" rx="8" fill="#1a1a1a" stroke="#ff6b00" stroke-width="1"/>
+    <text x="20" y="25" fill="#ff6b00" font-family="monospace" font-size="12" font-weight="bold">EXAMPLE EVALUATION</text>
+    
+    <g font-family="monospace" font-size="10" fill="#888">
+      <text x="20" y="50">Source: Underground forum user "xShadowBrokerx" (3yr account, verified sales, previous accurate leaks)</text>
+      <text x="20" y="68">Information: Claims upcoming ransomware campaign targeting healthcare sector</text>
+    </g>
+    
+    <g transform="translate(20, 80)">
+      <rect x="0" y="0" width="120" height="30" rx="5" fill="#1a3320" stroke="#2d5a35" stroke-width="2"/>
+      <text x="60" y="20" text-anchor="middle" fill="#86efac" font-family="monospace" font-size="18" font-weight="bold">B2</text>
+    </g>
+    
+    <g font-family="monospace" font-size="9" fill="#666">
+      <text x="160" y="95">B = Usually Reliable (established presence, track record)</text>
+      <text x="160" y="108">2 = Probably True (consistent with threat landscape, not independently confirmed)</text>
+    </g>
+  </g>
+  
+  <!-- Combination guide -->
+  <g transform="translate(50, 525)">
+    <rect x="0" y="0" width="800" height="55" rx="5" fill="#141414" stroke="#333" stroke-width="1"/>
+    <text x="400" y="18" text-anchor="middle" fill="#888" font-family="monospace" font-size="10" font-weight="bold">QUICK REFERENCE</text>
+    
+    <g font-family="monospace" font-size="9">
+      <text x="50" y="38" fill="#4ade80">A1 = Gold standard</text>
+      <text x="200" y="38" fill="#86efac">B2 = Solid intel</text>
+      <text x="350" y="38" fill="#fde047">C3 = Use with caution</text>
+      <text x="520" y="38" fill="#fbbf24">D4 = Questionable</text>
+      <text x="670" y="38" fill="#f87171">E5/F6 = Unreliable</text>
+    </g>
+  </g>
+  
+  <!-- Footer -->
+  <text x="450" y="595" text-anchor="middle" fill="#333" font-family="monospace" font-size="10">burnedsignal.com | Intelligence Fundamentals</text>
+</svg>
