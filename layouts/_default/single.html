@@ -5,24 +5,28 @@
     {{- partial "post-meta.html" . -}}
   </header>
 
-  {{ if and (.Params.toc | default true) (gt (len .TableOfContents) 100) }}
-  <aside class="toc-container">
-    <details class="toc" open>
-      <summary class="toc-title">
-        {{ if eq .Lang "tr" }}Icindekiler
-        {{ else if eq .Lang "es" }}Contenido
-        {{ else if eq .Lang "zh" }}Mu Lu
-        {{ else }}Table of Contents{{ end }}
-      </summary>
-      <nav class="toc-content">
-        {{ .TableOfContents }}
-      </nav>
-    </details>
-  </aside>
-  {{ end }}
+  {{ $hasToc := and (.Params.toc | default true) (gt (len .TableOfContents) 100) }}
 
-  <div class="post-content">
-    {{ .Content }}
+  <div class="post-layout{{ if $hasToc }} has-toc{{ end }}">
+    {{ if $hasToc }}
+    <aside class="toc-sidebar">
+      <div class="toc-sticky">
+        <div class="toc-title">
+          {{ if eq .Lang "tr" }}Icindekiler
+          {{ else if eq .Lang "es" }}Contenido
+          {{ else if eq .Lang "zh" }}Mu Lu
+          {{ else }}Table of Contents{{ end }}
+        </div>
+        <nav class="toc-content">
+          {{ .TableOfContents }}
+        </nav>
+      </div>
+    </aside>
+    {{ end }}
+
+    <div class="post-content">
+      {{ .Content }}
+    </div>
   </div>
 
   {{ with .Params.tags }}
