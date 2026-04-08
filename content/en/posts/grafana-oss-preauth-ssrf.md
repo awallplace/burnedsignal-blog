@@ -410,7 +410,3 @@ If you're running Grafana with anonymous access enabled, audit your datasource U
 | 2026-04-08 | Public disclosure |
 
 Grafana has marked this Out of Scope via their bug bounty program. A CVE has been requested from MITRE. The goal of this writeup is to ensure the risk is visible to the operators running the ~7,800 affected instances.
-
----
-
-> **Note:** The fix exists. It is called `EnterpriseDataSourceRequestValidator`. It resolves hostnames, checks IP ranges, and blocks private addresses. Grafana wrote it, tested it, and shipped it to production. Then they replaced it with `return nil` for OSS users. Their bug bounty program already had a category waiting: *"Any reports of SSRF against the data source proxy endpoint."* They were not surprised by this report. They were prepared for it.
