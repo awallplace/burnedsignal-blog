@@ -105,12 +105,29 @@ Host: localhost:3000
 ```
 
 **Step 2: Get datasource UID**
+
+The proxy endpoint requires a datasource UID in the path:
+
+```
+/api/datasources/proxy/uid/{UID}/...
+```
+
+Without the UID, there is no target. `/api/datasources` returns the full list including UIDs, backend URLs, and datasource types. On older Grafana versions, this endpoint is accessible to the Viewer role, meaning anonymous users can read it with no credentials:
+
 ```http
 GET /api/datasources HTTP/1.1
 Host: localhost:3000
 
 → 200 [{"uid":"cfhmf4adfa96od","type":"influxdb","url":"http://internal-mock:8888"}]
 ```
+
+Newer versions (10+) restrict this endpoint to Editor and above, returning 403 for Viewers. This adds friction but does not block the attack. Alternative UID sources:
+
+- **Dashboard JSON:** Any dashboard that uses the datasource embeds the UID in its panel definitions. `GET /api/dashboards/uid/{dashboard-uid}` returns the full JSON, accessible to Viewers. Search `.panels[].targets[].datasource.uid`.
+- **Public dashboards:** Instances with public dashboards expose datasource UIDs in the rendered page source.
+- **Brute-force:** Grafana UIDs follow a predictable alphanumeric format. Low-volume enumeration against the proxy endpoint is feasible — a 200 or 502 confirms a valid UID, a 404 does not.
+
+In the lab, `/api/datasources` returns the UID directly since the instance runs an older configuration.
 
 **Step 3: Trigger SSRF (no Authorization header)**
 ```http
