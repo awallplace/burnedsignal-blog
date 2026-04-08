@@ -178,7 +178,15 @@ GET /api/datasources/proxy/uid/{uid}/api/v1/namespaces
 → Returns cluster namespaces using the pod's service account token
 ```
 
-**Internal network enumeration:** HTTP 200 vs 502 vs timeout distinguishes live hosts from dead ones. Port scanning without direct network access.
+**Internal network enumeration (authenticated, Editor+):** An Editor can point a datasource at any internal IP:port, then probe via the proxy. Response codes map directly to host state:
+
+| Response | Meaning |
+|---|---|
+| `200` + service data | Host up, port open, service running |
+| `502 Bad Gateway` | Host up, port closed or wrong protocol |
+| Timeout | Host down or firewalled |
+
+Iterating across IPs and ports maps Grafana's internal network from the outside. The Grafana server does the probing; the attacker sees only response codes. No direct access to the internal network required.
 
 ---
 
@@ -268,23 +276,14 @@ Version range in the anonymous-enabled sample: **6.6.1 through 12.4.1**. Two ins
 
 ## Severity
 
-The score shifts depending on configuration:
-
-**Scenario A: Default config (anonymous access disabled, Editor required to create datasource)**
-```text
-CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:C/C:H/I:N/A:N
-Score: 7.3 (High)
-```
-
-**Scenario B: Anonymous access enabled (`GF_AUTH_ANONYMOUS_ENABLED=true`)**
 ```text
 CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:C/C:H/I:N/A:N
 Score: 8.6 (High)
 ```
 
-The key metric difference: `PR:L → PR:N`. When anonymous access is on, no credentials of any kind are required. The Viewer role is granted automatically, and `datasources:query` is granted to Viewer by default at datasource creation. No additional admin action required beyond enabling anonymous access itself.
+`AV:N` — network-accessible, no physical proximity required. `AC:L` — no special conditions. `PR:N` — no credentials of any kind: anonymous users inherit the Viewer role automatically, and `datasources:query` is granted to Viewer by default at datasource creation. `UI:N` — no victim interaction required. `S:C` (Scope Changed) — impact extends beyond Grafana to internal services the server can reach but the attacker cannot. `C:H` — full response bodies from internal services, including cloud credentials. `I:N` — read-only proxy; no writes occur. `A:N` — no availability impact.
 
-`S:C` (Scope Changed) because the impact goes beyond Grafana: an attacker accesses services the Grafana server can reach that they cannot reach directly. `I:N` because this is read-only SSRF; responses are returned but no writes occur via the proxy mechanism itself.
+When anonymous access is disabled, the vulnerability still exists for Editor-level users (datasource creation required). The score above reflects the pre-auth condition, which is the realistic worst case given the ~7,800 anonymous-access instances observed in Shodan.
 
 ---
 
