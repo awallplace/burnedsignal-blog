@@ -1286,6 +1286,18 @@ button {
   .footer-links {
     flex-wrap: wrap;
   }
+
+  /* Code blocks — prevent horizontal overflow on mobile */
+  .post-content pre,
+  .highlight {
+    max-width: 100%;
+  }
+
+  /* Inline code — break long paths/identifiers instead of overflowing */
+  .post-content code {
+    word-break: break-word;
+    overflow-wrap: anywhere;
+  }
 }
 
 @media (max-width: 480px) {
@@ -1295,6 +1307,13 @@ button {
 
   .post-content {
     font-size: var(--text-base);
+  }
+
+  /* Smaller code blocks on very small screens */
+  .post-content pre,
+  .highlight pre {
+    font-size: 0.78rem;
+    padding: var(--space-3);
   }
 
   .archive-item {
