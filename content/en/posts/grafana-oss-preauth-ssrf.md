@@ -130,6 +130,23 @@ Newer versions (10+) restrict this endpoint to Editor and above, returning 403 f
 In the lab, `/api/datasources` returns the UID directly since the instance runs an older configuration.
 
 **Step 3: Trigger SSRF (no Authorization header)**
+
+Step 2 only revealed metadata: the datasource configuration stored in Grafana's database. Seeing `"url":"http://internal-mock:8888"` in the datasource list does not mean the internal service is reachable. From the attacker's machine, it is not.
+
+This step is where the actual SSRF occurs. The proxy endpoint instructs Grafana's server to make an outbound HTTP request to the configured datasource URL and return the response. The attacker never contacts the internal service directly. Grafana does, from its own network position, and hands the result back.
+
+```
+Attacker (internet) ──► Grafana proxy endpoint
+                               │
+                               │  server-side request
+                               ▼
+                        internal-mock:8888  (not exposed to internet)
+                               │
+                               │  response
+                               ▼
+                        Grafana ──► Attacker
+```
+
 ```http
 GET /api/datasources/proxy/uid/cfhmf4adfa96od/ HTTP/1.1
 Host: localhost:3000
@@ -142,7 +159,7 @@ Host: localhost:3000
 }
 ```
 
-The internal service has no exposed ports to the host. The only path to it is through Grafana's proxy. An anonymous user from the internet received its response.
+The internal service has no exposed ports to the host. A direct request from the attacker's machine would time out. This response came back because Grafana's server made the request on the attacker's behalf.
 
 The full PoC (Docker lab setup, automated datasource enumeration, error handling) is on GitHub:
 
