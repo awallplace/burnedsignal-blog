@@ -799,6 +799,9 @@ button {
   margin: var(--space-6) 0;
   border-radius: var(--radius-lg);
   border: 1px solid var(--color-border);
+  max-width: 100%;
+  height: auto;
+  display: block;
 }
 
 .post-content hr {
@@ -808,9 +811,12 @@ button {
 }
 
 .post-content table {
+  display: block;
   width: 100%;
   margin: var(--space-6) 0;
   border-collapse: collapse;
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
 }
 
 .post-content th,
@@ -1150,6 +1156,8 @@ button {
   padding: var(--space-4);
   background: #1e1e1e;
   overflow-x: auto;
+  white-space: pre;
+  -webkit-overflow-scrolling: touch;
 }
 
 .highlight .lnt {
