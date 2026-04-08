@@ -131,22 +131,6 @@ The full PoC (Docker lab setup, automated datasource enumeration, error handling
 
 **[github.com/awallplace/grafana-datasource-ssrf](https://github.com/awallplace/grafana-datasource-ssrf)**
 
-Output from `poc.py` in the repo above, running against the Docker lab:
-
-```text
-[+] Anonymous access confirmed — org: Main Org.
-[+] Datasource UID: cfhmf4adfa96od
-
-[+] Proxy response — HTTP 200
-{
-  "ssrf_note": "This response came from internal-mock — NOT reachable directly from internet",
-  "secret_label": "db-password=s3cr3t!",
-  "instance": "internal-secret-db:9090"
-}
-
-[CONFIRMED] Internal service reached via Grafana proxy — no credentials used.
-```
-
 ![Exploitation flow: attacker reaches internal-mock through Grafana proxy with no credentials](/images/grafana-ssrf/exploitation-flow.svg)
 
 ---
