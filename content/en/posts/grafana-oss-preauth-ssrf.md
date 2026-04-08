@@ -268,7 +268,21 @@ A passive scan of 1,000 randomly sampled Grafana instances from Shodan's 206,310
 ============================================================
 ```
 
-**Extrapolated:** ~7,800 instances directly exploitable with no credentials. ~206,000 vulnerable with Editor access.
+**Two distinct attack surfaces:**
+
+**Surface 1 — Pre-auth (~7,800 instances):**
+Anonymous access is enabled. No credentials required. An unauthenticated attacker can enumerate datasources and proxy requests to any configured backend URL immediately. This is the scenario the Shodan scan measured directly.
+
+**Surface 2 — Post-auth (~206,000 instances):**
+The no-op validator exists in every Grafana OSS build regardless of authentication configuration. An attacker with a compromised Editor account — through phishing, credential stuffing, a leaked API key, or an SSO breach — can:
+
+1. Create a new datasource with the URL set to any internal target (`http://169.254.169.254/`, `https://kubernetes.default.svc`, an internal database, etc.)
+2. Use the datasource proxy endpoint to forward requests to that target
+3. Receive the full response — including IAM credentials, service data, or internal API responses
+
+The validator never runs. The whitelist is empty by default. The only difference from Surface 1 is that an authentication step precedes the exploit.
+
+This is a meaningful distinction: Surface 2 requires a compromised account, which is a separate precondition. But it means the ~206,000 instances that appear "safe" because anonymous access is disabled are one credential breach away from the same internal exposure.
 
 Version range in the anonymous-enabled sample: **6.6.1 through 12.4.1**. Two instances running `+security-01` patch releases. Grafana's security patches did not address this. It has been present across at least six major release lines.
 
