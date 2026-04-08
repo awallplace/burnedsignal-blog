@@ -125,7 +125,7 @@ Newer versions (10+) restrict this endpoint to Editor and above, returning 403 f
 
 - **Dashboard JSON:** Any dashboard that uses the datasource embeds the UID in its panel definitions. `GET /api/dashboards/uid/{dashboard-uid}` returns the full JSON, accessible to Viewers. Search `.panels[].targets[].datasource.uid`.
 - **Public dashboards:** Instances with public dashboards expose datasource UIDs in the rendered page source.
-- **Brute-force:** Grafana UIDs follow a predictable alphanumeric format. Low-volume enumeration against the proxy endpoint is feasible — a 200 or 502 confirms a valid UID, a 404 does not.
+- **Brute-force:** Grafana UIDs follow a predictable alphanumeric format. Low-volume enumeration against the proxy endpoint is feasible. A 200 or 502 confirms a valid UID; a 404 does not.
 
 In the lab, `/api/datasources` returns the UID directly since the instance runs an older configuration.
 
@@ -329,7 +329,16 @@ CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:C/C:H/I:N/A:N
 Score: 8.6 (High)
 ```
 
-`AV:N` — network-accessible, no physical proximity required. `AC:L` — no special conditions. `PR:N` — no credentials of any kind: anonymous users inherit the Viewer role automatically, and `datasources:query` is granted to Viewer by default at datasource creation. `UI:N` — no victim interaction required. `S:C` (Scope Changed) — impact extends beyond Grafana to internal services the server can reach but the attacker cannot. `C:H` — full response bodies from internal services, including cloud credentials. `I:N` — read-only proxy; no writes occur. `A:N` — no availability impact.
+| Metric | Value | Rationale |
+|---|---|---|
+| Attack Vector | `Network` | Exploitable remotely over the internet |
+| Attack Complexity | `Low` | No race conditions or special setup required |
+| Privileges Required | `None` | Anonymous users get Viewer role automatically; `datasources:query` is granted to Viewer at datasource creation. No login needed |
+| User Interaction | `None` | No victim action required |
+| Scope | `Changed` | Impact extends beyond Grafana to internal services the server can reach but the attacker cannot |
+| Confidentiality | `High` | Full response bodies from internal services, including cloud credentials |
+| Integrity | `None` | Read-only proxy; no writes occur via this mechanism |
+| Availability | `None` | No service disruption |
 
 When anonymous access is disabled, the vulnerability still exists for Editor-level users (datasource creation required). The score above reflects the pre-auth condition, which is the realistic worst case given the ~7,800 anonymous-access instances observed in Shodan.
 
