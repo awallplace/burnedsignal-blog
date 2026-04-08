@@ -127,7 +127,7 @@ Host: localhost:3000
 
 The internal service has no exposed ports to the host. The only path to it is through Grafana's proxy. An anonymous user from the internet received its response.
 
-The full PoC — including Docker lab setup, automated datasource enumeration, and error handling — is on GitHub:
+The full PoC (Docker lab setup, automated datasource enumeration, error handling) is on GitHub:
 
 **[github.com/awallplace/grafana-datasource-ssrf](https://github.com/awallplace/grafana-datasource-ssrf)**
 
