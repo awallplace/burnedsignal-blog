@@ -270,15 +270,15 @@ A passive scan of 1,000 randomly sampled Grafana instances from Shodan's 206,310
 
 **Two distinct attack surfaces:**
 
-**Surface 1 — Pre-auth (~7,800 instances):**
+**Surface 1: Pre-auth (~7,800 instances):**
 Anonymous access is enabled. No credentials required. An unauthenticated attacker can enumerate datasources and proxy requests to any configured backend URL immediately. This is the scenario the Shodan scan measured directly.
 
-**Surface 2 — Post-auth (~206,000 instances):**
-The no-op validator exists in every Grafana OSS build regardless of authentication configuration. An attacker with a compromised Editor account — through phishing, credential stuffing, a leaked API key, or an SSO breach — can:
+**Surface 2: Post-auth (~206,000 instances):**
+The no-op validator exists in every Grafana OSS build regardless of authentication configuration. An attacker with a compromised Editor account (through phishing, credential stuffing, a leaked API key, or an SSO breach) can:
 
 1. Create a new datasource with the URL set to any internal target (`http://169.254.169.254/`, `https://kubernetes.default.svc`, an internal database, etc.)
 2. Use the datasource proxy endpoint to forward requests to that target
-3. Receive the full response — including IAM credentials, service data, or internal API responses
+3. Receive the full response: IAM credentials, service data, or internal API responses
 
 The validator never runs. The whitelist is empty by default. The only difference from Surface 1 is that an authentication step precedes the exploit.
 
