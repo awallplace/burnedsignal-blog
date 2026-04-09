@@ -136,15 +136,14 @@ Step 2 only revealed metadata: the datasource configuration stored in Grafana's 
 This step is where the actual SSRF occurs. The proxy endpoint instructs Grafana's server to make an outbound HTTP request to the configured datasource URL and return the response. The attacker never contacts the internal service directly. Grafana does, from its own network position, and hands the result back.
 
 ```
-Attacker (internet) ──► Grafana proxy endpoint
-                               │
-                               │  server-side request
-                               ▼
-                        internal-mock:8888  (not exposed to internet)
-                               │
-                               │  response
-                               ▼
-                        Grafana ──► Attacker
+Attacker (internet) ─────────────────────► Grafana proxy
+        ▲                                        │
+        │                                        │ server-side request
+        │                                        ▼
+        │                               internal-mock:8888
+        │                               (not internet-reachable)
+        │                                        │
+        └──────── full response body ◄───────────┘
 ```
 
 ```http
