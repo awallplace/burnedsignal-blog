@@ -2,7 +2,7 @@
 title: "How Grafana's No-Op Validator Turns Anonymous Access Into Pre-Auth SSRF"
 slug: "grafana-oss-preauth-ssrf"
 date: 2026-04-08
-draft: false
+draft: true
 tags: ["vulnerability-research", "SSRF", "grafana", "bug-bounty", "responsible-disclosure", "CVE"]
 categories: ["Vulnerability Research"]
 keywords: ["Grafana SSRF", "pre-auth SSRF", "OSSDataSourceRequestValidator", "datasource proxy", "Grafana OSS vulnerability", "Shodan Grafana"]

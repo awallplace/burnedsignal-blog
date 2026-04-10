@@ -2,7 +2,7 @@
 title: "Grafana 的 No-Op 验证器如何将匿名访问变为预认证 SSRF"
 slug: "grafana-oss-preauth-ssrf"
 date: 2026-04-08
-draft: false
+draft: true
 tags: ["vulnerability-research", "SSRF", "grafana", "bug-bounty", "responsible-disclosure", "CVE"]
 categories: ["漏洞研究"]
 keywords: ["Grafana SSRF", "pre-auth SSRF", "OSSDataSourceRequestValidator", "datasource proxy", "Grafana OSS vulnerability", "Shodan Grafana"]
