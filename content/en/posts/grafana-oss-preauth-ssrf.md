@@ -150,11 +150,14 @@ Attacker (internet) ────────────────────
 GET /api/datasources/proxy/uid/cfhmf4adfa96od/ HTTP/1.1
 Host: localhost:3000
 
-→ 200
+HTTP/1.1 200 OK
+Content-Type: application/json
+
 {
-  "ssrf_note": "This response came from internal-mock — NOT reachable directly from internet",
-  "secret_label": "db-password=s3cr3t!",
-  "instance": "internal-secret-db:9090"
+  "status": "ok",
+  "db_host": "internal-secret-db:9090",
+  "db_password": "s3cr3t!",
+  "note": "not internet-reachable"
 }
 ```
 
