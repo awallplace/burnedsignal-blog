@@ -2,7 +2,7 @@
 title: "How Grafana's No-Op Validator Turns Anonymous Access Into Pre-Auth SSRF"
 slug: "grafana-oss-preauth-ssrf"
 date: 2026-04-08
-draft: true
+draft: false
 tags: ["vulnerability-research", "SSRF", "grafana", "bug-bounty", "responsible-disclosure", "CVE"]
 categories: ["Vulnerability Research"]
 keywords: ["Grafana SSRF", "pre-auth SSRF", "OSSDataSourceRequestValidator", "datasource proxy", "Grafana OSS vulnerability", "Shodan Grafana"]
@@ -19,7 +19,7 @@ reading_time: "10 min"
 - A Shodan scan of 1,000 random instances found **~7,800 internet-exposed Grafana instances** with anonymous access enabled. Directly exploitable, no credentials required.
 - On EC2 with IMDSv1 enabled, this means **full AWS credential theft with no login**: AccessKeyId, SecretAccessKey, session token.
 - Grafana Enterprise ships a real validator. OSS does not. This is a deliberate product split.
-- Submitted to Grafana's bug bounty program, marked Out of Scope. CVE requested from MITRE.
+- Submitted to Grafana's bug bounty program, marked Out of Scope. Tracked as **[CVE-2026-39104](https://www.cve.org/CVERecord?id=CVE-2026-39104)**, assigned by MITRE.
 
 ---
 
@@ -410,5 +410,6 @@ If you're running Grafana with anonymous access enabled, audit your datasource U
 | 2026-04-01 | Marked Out of Scope: *"Any reports of SSRF against the data source proxy endpoint"* |
 | 2026-04-01 | CVE requested from MITRE |
 | 2026-04-08 | Public disclosure |
+| 2026-05-01 | **CVE-2026-39104** assigned by MITRE (affects Grafana OSS v6.6.1 through 12.4.1) |
 
-Grafana has marked this Out of Scope via their bug bounty program. A CVE has been requested from MITRE. The goal of this writeup is to ensure the risk is visible to the operators running the ~7,800 affected instances.
+Grafana has marked this Out of Scope via their bug bounty program. MITRE has since assigned **[CVE-2026-39104](https://www.cve.org/CVERecord?id=CVE-2026-39104)**, covering Grafana OSS v6.6.1 through 12.4.1. The goal of this writeup is to ensure the risk is visible to the operators running the ~7,800 affected instances.

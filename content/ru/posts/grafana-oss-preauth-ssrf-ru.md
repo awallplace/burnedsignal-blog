@@ -2,7 +2,7 @@
 title: "Как No-Op валидатор Grafana превращает анонимный доступ в Pre-Auth SSRF"
 slug: "grafana-oss-preauth-ssrf"
 date: 2026-04-08
-draft: true
+draft: false
 tags: ["vulnerability-research", "SSRF", "grafana", "bug-bounty", "responsible-disclosure", "CVE"]
 categories: ["Vulnerability Research"]
 keywords: ["Grafana SSRF", "pre-auth SSRF", "OSSDataSourceRequestValidator", "datasource proxy", "Grafana OSS vulnerability", "Shodan Grafana"]
@@ -19,7 +19,7 @@ reading_time: "10 min"
 - Сканирование через Shodan 1 000 случайных инстансов обнаружило **~7 800 открытых в интернет инстансов Grafana** с включённым анонимным доступом. Эксплуатируется напрямую, учётные данные не требуются.
 - На EC2 с включённым IMDSv1 это означает **полную кражу AWS-учётных данных без логина**: AccessKeyId, SecretAccessKey, токен сессии.
 - Grafana Enterprise поставляется с настоящим валидатором. OSS — нет. Это намеренное разделение продуктов.
-- Отправлено в программу bug bounty Grafana, отмечено как вне области применения. CVE запрошен у MITRE.
+- Отправлено в программу bug bounty Grafana, отмечено как вне области применения. Отслеживается как **[CVE-2026-39104](https://www.cve.org/CVERecord?id=CVE-2026-39104)**, присвоено MITRE.
 
 ---
 
@@ -408,5 +408,6 @@ func (*OSSDataSourceRequestValidator) Validate(urlStr string, _ *simplejson.Json
 | 2026-04-01 | Отмечено как вне области применения: *«Any reports of SSRF against the data source proxy endpoint»* |
 | 2026-04-01 | CVE запрошен у MITRE |
 | 2026-04-08 | Публичное раскрытие |
+| 2026-05-01 | **CVE-2026-39104** присвоен MITRE (затрагивает Grafana OSS v6.6.1 — 12.4.1) |
 
-Grafana отметила это как вне области применения через свою программу bug bounty. CVE запрошен у MITRE. Цель этого материала — сделать риск видимым для операторов, управляющих ~7 800 затронутыми инстансами.
+Grafana отметила это как вне области применения через свою программу bug bounty. MITRE присвоила идентификатор **[CVE-2026-39104](https://www.cve.org/CVERecord?id=CVE-2026-39104)**, охватывающий Grafana OSS v6.6.1 — 12.4.1. Цель этого материала — сделать риск видимым для операторов, управляющих ~7 800 затронутыми инстансами.

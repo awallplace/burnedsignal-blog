@@ -2,7 +2,7 @@
 title: "Grafana 的 No-Op 验证器如何将匿名访问变为预认证 SSRF"
 slug: "grafana-oss-preauth-ssrf"
 date: 2026-04-08
-draft: true
+draft: false
 tags: ["vulnerability-research", "SSRF", "grafana", "bug-bounty", "responsible-disclosure", "CVE"]
 categories: ["漏洞研究"]
 keywords: ["Grafana SSRF", "pre-auth SSRF", "OSSDataSourceRequestValidator", "datasource proxy", "Grafana OSS vulnerability", "Shodan Grafana"]
@@ -19,7 +19,7 @@ reading_time: "10 min"
 - 对 Shodan 上 1,000 个随机实例的扫描发现，**约 7,800 个暴露在互联网上的 Grafana 实例**开启了匿名访问，可直接利用，无需任何凭据。
 - 在启用了 IMDSv1 的 EC2 上，这意味着**无需登录即可窃取完整的 AWS 凭据**：AccessKeyId、SecretAccessKey、会话令牌。
 - Grafana Enterprise 版本内置了真实的验证器，OSS 版本没有。这是一个刻意的产品划分。
-- 已提交至 Grafana 漏洞奖励计划，被标记为超出范围。已向 MITRE 申请 CVE。
+- 已提交至 Grafana 漏洞奖励计划，被标记为超出范围。MITRE 已分配编号 **[CVE-2026-39104](https://www.cve.org/CVERecord?id=CVE-2026-39104)**。
 
 ---
 
@@ -408,5 +408,6 @@ func (*OSSDataSourceRequestValidator) Validate(urlStr string, _ *simplejson.Json
 | 2026-04-01 | 被标记为超出范围：*"Any reports of SSRF against the data source proxy endpoint"* |
 | 2026-04-01 | 向 MITRE 申请 CVE |
 | 2026-04-08 | 公开披露 |
+| 2026-05-01 | MITRE 分配 **CVE-2026-39104**（影响 Grafana OSS v6.6.1 至 12.4.1） |
 
-Grafana 已通过其漏洞奖励计划将此问题标记为超出范围。CVE 已向 MITRE 申请。本文的目标是确保风险对运行约 7,800 个受影响实例的运维人员可见。
+Grafana 已通过其漏洞奖励计划将此问题标记为超出范围。MITRE 现已分配编号 **[CVE-2026-39104](https://www.cve.org/CVERecord?id=CVE-2026-39104)**，涵盖 Grafana OSS v6.6.1 至 12.4.1。本文的目标是确保风险对运行约 7,800 个受影响实例的运维人员可见。
